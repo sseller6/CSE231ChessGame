@@ -2,7 +2,7 @@
  * Source File:
  *    TEST BOARD
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for board
  ************************************************************************/

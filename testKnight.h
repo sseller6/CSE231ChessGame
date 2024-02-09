@@ -2,7 +2,7 @@
  * Header File:
  *    TEST KNIGHT
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for Knight
  ************************************************************************/

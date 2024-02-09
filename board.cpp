@@ -2,7 +2,7 @@
  * Source File:
  *    BOARD 
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    A collection of pieces and a small amount of game state
  ************************************************************************/
@@ -114,7 +114,8 @@ void Board::free()
         {
             if (board[c][r])
             {
-                delete board[c][r];
+                // TDOD: implement DELETE
+                // delete board[c][r];
                 board[c][r] = nullptr;
             }
         }

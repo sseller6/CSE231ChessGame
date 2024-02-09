@@ -2,7 +2,7 @@
  * Header File:
  *    TEST ROOK
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for the Rook
  ************************************************************************/

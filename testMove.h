@@ -2,7 +2,7 @@
  * Header File:
  *    TEST MOVE 
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary
  *    test the Move class
  ************************************************************************/

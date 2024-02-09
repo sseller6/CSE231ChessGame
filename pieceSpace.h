@@ -2,7 +2,7 @@
  * Header File:
  *    SPACE
  * Author:
- *    <your name here> 
+ *     Josh & Steven 
  * Summary:
  *    The space
  ************************************************************************/

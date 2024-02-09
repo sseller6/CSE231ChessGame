@@ -2,7 +2,7 @@
 * Source File:
 *    Lab 04: Chess
 * Author:
-*    <your name here>
+*    Josh & Steven
 * Summary:
 *    Play the game of chess
 ************************************************************************/

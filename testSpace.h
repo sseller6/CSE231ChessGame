@@ -2,7 +2,7 @@
  * Header File:
  *    TEST SPACE
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for the space
  ************************************************************************/

@@ -2,7 +2,7 @@
  * Source File:
  *    KNIGHT
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The knight class
  ************************************************************************/

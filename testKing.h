@@ -2,7 +2,7 @@
  * Header File:
  *    TEST KING
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for King
  ************************************************************************/

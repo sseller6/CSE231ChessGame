@@ -2,7 +2,7 @@
  * Header File:
  *    ROOK
  * Author:
-*    <your name here>
+*     Josh & Steven
  * Summary:
  *    The KNIGHT class
  ************************************************************************/

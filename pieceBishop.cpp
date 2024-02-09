@@ -2,7 +2,7 @@
  * Source File:
  *    BISHOP
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The Bishop class
  ************************************************************************/

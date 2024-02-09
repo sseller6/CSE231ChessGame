@@ -2,7 +2,7 @@
  * Header File:
  *    TEST PAWN
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for Pawn
  ************************************************************************/

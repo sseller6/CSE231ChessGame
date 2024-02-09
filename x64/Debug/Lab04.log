@@ -1,2 +1,22 @@
 ﻿  board.cpp
+  chess.cpp
+  move.cpp
+  piece.cpp
+  pieceBishop.cpp
+  pieceKnight.cpp
+  position.cpp
+  test.cpp
+  testBishop.cpp
+  testBoard.cpp
+  testKing.cpp
+  testKnight.cpp
+  testMove.cpp
+  testPawn.cpp
+  testPiece.cpp
+  testPosition.cpp
+  testQueen.cpp
+  testRook.cpp
+  uiDraw.cpp
+  uiInteract.cpp
+  Generating Code...
   Lab04.vcxproj -> C:\git\desktop_version_wdd\public_programming_projects\cse_231-A2\CSE231Lab05\x64\Debug\Lab04.exe

@@ -2,7 +2,7 @@
  * Header File:
  *    BOARD 
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    A collection of pieces and a small amount of game state
  ************************************************************************/
@@ -43,7 +43,7 @@ public:
 
    // create and destroy the board
    Board(ogstream* pgout = nullptr, bool noreset = false);
-   virtual ~Board()   {  }
+   virtual ~Board() { free(); }
 
    // getters
    virtual int  getCurrentMove() const { return numMoves + 1;}

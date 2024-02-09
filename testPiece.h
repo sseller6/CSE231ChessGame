@@ -2,7 +2,7 @@
  * Header File:
  *    TEST PIECE
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The unit tests for the piece base class
  ************************************************************************/
