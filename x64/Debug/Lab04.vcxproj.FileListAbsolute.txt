@@ -1,0 +1,2 @@
+C:\ProgrammingProjects\publicRepositories\cse231PairProgramming\cse231Lab04\CSE231Lab04\231.04.Lab\x64\Debug\Lab04.exe
+C:\ProgrammingProjects\publicRepositories\cse231PairProgramming\cse231Lab05Attempt#2\x64\Debug\Lab04.exe
