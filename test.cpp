@@ -15,7 +15,7 @@
 #include "testBoard.h"
 #include "testMove.h"
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <windows.h>
 #include <iostream>
 using namespace std;
@@ -34,7 +34,7 @@ int PieceSpy::numMove = 0;
  ****************************************************************/
 void testRunner()
 {
-#ifdef WIN32
+#ifdef _WIN32
    AllocConsole();
    FILE* stream;
    errno_t err;

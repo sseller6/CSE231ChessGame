@@ -56,9 +56,6 @@ void Board::reset(bool fFree)
    }
 }
 
-// we really REALLY need to delete this.
-Space space(0,0);
-
 /***********************************************
 * BOARD : GET
 *         Get a piece from a given position.
@@ -86,27 +83,7 @@ void Board::display(const Position & posHover, const Position & posSelect) const
       for (int c = 0; c < 8; c++)
       {
          Piece * piece = board[c][r];
-         switch (piece->getType())
-         {
-            case PAWN:
-               pgout->drawPawn(Position(c, r), !piece->isWhite());
-               break;
-            case ROOK:
-               pgout->drawRook(Position(c, r), !piece->isWhite());
-               break;
-            case KNIGHT:
-               pgout->drawKnight(Position(c, r), !piece->isWhite());
-               break;
-            case BISHOP:
-               pgout->drawBishop(Position(c, r), !piece->isWhite());
-               break;
-            case QUEEN:
-               pgout->drawQueen(Position(c, r), !piece->isWhite());
-               break;
-            case KING:
-               pgout->drawKing(Position(c, r), !piece->isWhite());
-               break;
-         }
+         piece->display(pgout);
       }
    }
 }
@@ -131,9 +108,17 @@ Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
  ************************************************/
 void Board::free()
 {
-   for (int r = 0; r < 8; r++)
-      for (int c = 0; c < 8; c++)
-         board[c][r] = nullptr;
+    for (int r = 0; r < 8; r++)
+    {
+        for (int c = 0; c < 8; c++)
+        {
+            if (board[c][r])
+            {
+                delete board[c][r];
+                board[c][r] = nullptr;
+            }
+        }
+    }
 }
 
 
@@ -181,10 +166,10 @@ void Board::move(const Move & move)
       board[desCol][desRow] = pieceMove;
       board[srcCol][srcRow] = replace;
    }
+
+   // TODO: write ENPASSANT and PROMOTE
    
    numMoves++;
-   
-   // TODO: write ENPASSANT and PROMOTE
 }
 
 

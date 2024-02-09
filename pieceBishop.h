@@ -12,8 +12,8 @@
 #include "piece.h"
 
  /***************************************************
-  * KNIGHT
-  * The knight, aka the "Horse"
+  * BISHOP
+  * The bishop, a holy man.
   ***************************************************/
 class Bishop : public Piece
 {

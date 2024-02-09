@@ -102,6 +102,7 @@
     <ClCompile Include="chess.cpp" />
     <ClCompile Include="move.cpp" />
     <ClCompile Include="piece.cpp" />
+    <ClCompile Include="pieceBishop.cpp" />
     <ClCompile Include="pieceKnight.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="test.cpp" />

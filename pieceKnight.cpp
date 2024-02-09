@@ -20,7 +20,7 @@ using namespace std;
  ***************************************************/
 void Knight::display(ogstream* pgout) const
 {
-
+    pgout->drawKnight(this->position, !isWhite());
 }
 
 
@@ -47,15 +47,14 @@ void Knight::getMoves(set <Move>& moves, const Board& board) const
          if (dest.getRow() != -1)
          {
             // or occupied by a piece of same team
-            const Piece& tP = board[dest];
-            tP.isWhite();
-            if (tP.isWhite() != this->isWhite() || board[dest].getType() == SPACE)
+            const Piece& pieceDest = board[dest];
+            if (pieceDest.isWhite() != this->isWhite() || pieceDest.getType() == SPACE)
             {
-               bool isCapture = board[dest].getType() != SPACE;
+               bool isCapture = pieceDest.getType() != SPACE;
                Move move = Move(this->position,
                                 dest,
                                 move.MOVE,
-                                isCapture ? board[dest].getType() : SPACE);
+                                isCapture ? pieceDest.getType() : SPACE);
                moves.insert(move);
             }
          }

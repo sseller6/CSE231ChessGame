@@ -26,10 +26,10 @@ class TestBoard : public UnitTest
 public:
    void run()
    {
-      //// construct
-      //construct_default();
+      // construct
+      //construct_default(); // do this later
 
-      //// move
+      // move
       //move_pawnSimple();
       //move_pawnCapture();
       //move_pawnDouble();
@@ -37,8 +37,8 @@ public:
       //move_pawnPromotion();
       //move_rookSlide();
       //move_rookAttack();
-      //move_bishopSlide();
-      //move_bishopAttack();
+      move_bishopSlide();
+      move_bishopAttack();
       //move_knightMove();
       //move_knightAttack();
       //move_queenSlide();
@@ -48,19 +48,19 @@ public:
       //move_kingShortCastle();
       //move_kingLongCastle();
 
-      //// Get Current Move
+      // Get Current Move
       //getCurrentMove_initial();
       //getCurrentMove_second();
       //getCurrentMove_middleWhite();
       //getCurrentMove_middleBlack();
 
-      //// Whites Turn?
+      // Whites Turn?
       //whiteTurn_initial();
       //whiteTurn_second();
       //whiteTurn_middleWhite();
       //whiteTurn_middleBlack();
 
-      //// fetch and get
+      // fetch and get
       //fetch_a1();
       //fetch_h8();
       //fetch_a8();
@@ -68,7 +68,7 @@ public:
       //set_h8();
       //set_a8();
 
-      //report("Board");
+      report("Board");
    }
 private:
    

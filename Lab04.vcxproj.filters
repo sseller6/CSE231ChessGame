@@ -72,6 +72,9 @@
     <ClCompile Include="testBishop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pieceBishop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="move.h">
