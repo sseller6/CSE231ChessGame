@@ -7,11 +7,6 @@
  *    The Queen class
  ************************************************************************/
 
-#pragma once
-
-#include <iostream>
-using namespace std;
-
 #include "pieceQueen.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()
@@ -22,7 +17,7 @@ using namespace std;
 ***************************************************/
 void Queen::display(ogstream* pgout) const
 {
-    pgout->drawBishop(this->position, !isWhite());
+    pgout->drawQueen(this->position, !isWhite());
 }
 
 /**********************************************

@@ -7,11 +7,6 @@
  *    The Pawn class
  ************************************************************************/
 
-#pragma once
-
-#include <iostream>
-using namespace std;
-
 #include "piecePawn.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()
@@ -22,7 +17,7 @@ using namespace std;
 ***************************************************/
 void Pawn::display(ogstream* pgout) const
 {
-    pgout->drawBishop(this->position, !isWhite());
+    pgout->drawPawn(this->position, !isWhite());
 }
 
 // TODO - Lines 33 through 84 - 2/10/2024

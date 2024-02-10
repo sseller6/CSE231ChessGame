@@ -7,11 +7,6 @@
  *    The King class
  ************************************************************************/
 
-#pragma once
-
-#include <iostream>
-using namespace std;
-
 #include "pieceKing.h"
 #include "board.h"
 #include "uiDraw.h"  
@@ -23,7 +18,7 @@ using namespace std;
  ***************************************************/
 void King::display(ogstream* pgout) const
 {
-    pgout->drawKnight(this->position, !isWhite());
+    pgout->drawKing(this->position, !isWhite());
 }
 
 /**********************************************

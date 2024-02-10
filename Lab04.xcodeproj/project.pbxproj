@@ -23,6 +23,16 @@
 		C1EE0DA92B28F3C600E5D6E1 /* testPiece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1EE0D9B2B28F3C600E5D6E1 /* testPiece.cpp */; };
 		C1EE0DAD2B28F41500E5D6E1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EE0DAB2B28F41500E5D6E1 /* OpenGL.framework */; };
 		C1EE0DAE2B28F41500E5D6E1 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EE0DAC2B28F41500E5D6E1 /* GLUT.framework */; };
+		E733E7D82B780F2A00328AB7 /* pieceBishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7C92B78039000328AB7 /* pieceBishop.cpp */; };
+		E733E7D92B780F2A00328AB7 /* pieceKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7C22B78039000328AB7 /* pieceKing.cpp */; };
+		E733E7DA2B780F2B00328AB7 /* piecePawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7C42B78039000328AB7 /* piecePawn.cpp */; };
+		E733E7DB2B780F2B00328AB7 /* pieceQueen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7CC2B78039100328AB7 /* pieceQueen.cpp */; };
+		E733E7DC2B780F2B00328AB7 /* pieceRook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7D22B78039100328AB7 /* pieceRook.cpp */; };
+		E733E7DD2B780F2B00328AB7 /* testBishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7BD2B78038F00328AB7 /* testBishop.cpp */; };
+		E733E7DE2B780F2B00328AB7 /* testKing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7C02B78039000328AB7 /* testKing.cpp */; };
+		E733E7DF2B780F2B00328AB7 /* testPawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7BF2B78038F00328AB7 /* testPawn.cpp */; };
+		E733E7E02B780F2B00328AB7 /* testQueen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7C12B78039000328AB7 /* testQueen.cpp */; };
+		E733E7E12B780F2B00328AB7 /* testRook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E733E7D72B78039200328AB7 /* testRook.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +82,33 @@
 		C1EE0D9B2B28F3C600E5D6E1 /* testPiece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testPiece.cpp; sourceTree = "<group>"; };
 		C1EE0DAB2B28F41500E5D6E1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		C1EE0DAC2B28F41500E5D6E1 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		E733E7BD2B78038F00328AB7 /* testBishop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testBishop.cpp; sourceTree = "<group>"; };
+		E733E7BE2B78038F00328AB7 /* testPawn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testPawn.h; sourceTree = "<group>"; };
+		E733E7BF2B78038F00328AB7 /* testPawn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testPawn.cpp; sourceTree = "<group>"; };
+		E733E7C02B78039000328AB7 /* testKing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testKing.cpp; sourceTree = "<group>"; };
+		E733E7C12B78039000328AB7 /* testQueen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testQueen.cpp; sourceTree = "<group>"; };
+		E733E7C22B78039000328AB7 /* pieceKing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pieceKing.cpp; sourceTree = "<group>"; };
+		E733E7C32B78039000328AB7 /* Lab04.vcxproj.user */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Lab04.vcxproj.user; sourceTree = "<group>"; };
+		E733E7C42B78039000328AB7 /* piecePawn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = piecePawn.cpp; sourceTree = "<group>"; };
+		E733E7C52B78039000328AB7 /* Lab04.vcxproj.filters */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Lab04.vcxproj.filters; sourceTree = "<group>"; };
+		E733E7C62B78039000328AB7 /* pieceBishop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pieceBishop.h; sourceTree = "<group>"; };
+		E733E7C72B78039000328AB7 /* testKing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testKing.h; sourceTree = "<group>"; };
+		E733E7C82B78039000328AB7 /* testQueen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testQueen.h; sourceTree = "<group>"; };
+		E733E7C92B78039000328AB7 /* pieceBishop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pieceBishop.cpp; sourceTree = "<group>"; };
+		E733E7CA2B78039100328AB7 /* testBishop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testBishop.h; sourceTree = "<group>"; };
+		E733E7CB2B78039100328AB7 /* Lab04.vcxproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Lab04.vcxproj; sourceTree = "<group>"; };
+		E733E7CC2B78039100328AB7 /* pieceQueen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pieceQueen.cpp; sourceTree = "<group>"; };
+		E733E7CD2B78039100328AB7 /* Lab04.sln */ = {isa = PBXFileReference; lastKnownFileType = text; path = Lab04.sln; sourceTree = "<group>"; };
+		E733E7CE2B78039100328AB7 /* pieceRook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pieceRook.h; sourceTree = "<group>"; };
+		E733E7CF2B78039100328AB7 /* testRook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testRook.h; sourceTree = "<group>"; };
+		E733E7D02B78039100328AB7 /* packages.config */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = packages.config; sourceTree = "<group>"; };
+		E733E7D12B78039100328AB7 /* pieceKing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pieceKing.h; sourceTree = "<group>"; };
+		E733E7D22B78039100328AB7 /* pieceRook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pieceRook.cpp; sourceTree = "<group>"; };
+		E733E7D32B78039100328AB7 /* pieceQueen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pieceQueen.h; sourceTree = "<group>"; };
+		E733E7D42B78039200328AB7 /* x64 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = x64; sourceTree = "<group>"; };
+		E733E7D52B78039200328AB7 /* piecePawn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = piecePawn.h; sourceTree = "<group>"; };
+		E733E7D62B78039200328AB7 /* packages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = packages; sourceTree = "<group>"; };
+		E733E7D72B78039200328AB7 /* testRook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testRook.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +128,33 @@
 			isa = PBXGroup;
 			children = (
 				C1EE0D7F2B28F3C500E5D6E1 /* board.cpp */,
+				E733E7CD2B78039100328AB7 /* Lab04.sln */,
+				E733E7CB2B78039100328AB7 /* Lab04.vcxproj */,
+				E733E7C52B78039000328AB7 /* Lab04.vcxproj.filters */,
+				E733E7C32B78039000328AB7 /* Lab04.vcxproj.user */,
+				E733E7D62B78039200328AB7 /* packages */,
+				E733E7D02B78039100328AB7 /* packages.config */,
+				E733E7C92B78039000328AB7 /* pieceBishop.cpp */,
+				E733E7C62B78039000328AB7 /* pieceBishop.h */,
+				E733E7C22B78039000328AB7 /* pieceKing.cpp */,
+				E733E7D12B78039100328AB7 /* pieceKing.h */,
+				E733E7C42B78039000328AB7 /* piecePawn.cpp */,
+				E733E7D52B78039200328AB7 /* piecePawn.h */,
+				E733E7CC2B78039100328AB7 /* pieceQueen.cpp */,
+				E733E7D32B78039100328AB7 /* pieceQueen.h */,
+				E733E7D22B78039100328AB7 /* pieceRook.cpp */,
+				E733E7CE2B78039100328AB7 /* pieceRook.h */,
+				E733E7BD2B78038F00328AB7 /* testBishop.cpp */,
+				E733E7CA2B78039100328AB7 /* testBishop.h */,
+				E733E7C02B78039000328AB7 /* testKing.cpp */,
+				E733E7C72B78039000328AB7 /* testKing.h */,
+				E733E7BF2B78038F00328AB7 /* testPawn.cpp */,
+				E733E7BE2B78038F00328AB7 /* testPawn.h */,
+				E733E7C12B78039000328AB7 /* testQueen.cpp */,
+				E733E7C82B78039000328AB7 /* testQueen.h */,
+				E733E7D72B78039200328AB7 /* testRook.cpp */,
+				E733E7CF2B78039100328AB7 /* testRook.h */,
+				E733E7D42B78039200328AB7 /* x64 */,
 				C1EE0D8C2B28F3C600E5D6E1 /* board.h */,
 				C1EE0D7D2B28F3C500E5D6E1 /* chess.cpp */,
 				C1EE0D992B28F3C600E5D6E1 /* move.cpp */,
@@ -200,6 +264,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E733E7D82B780F2A00328AB7 /* pieceBishop.cpp in Sources */,
+				E733E7D92B780F2A00328AB7 /* pieceKing.cpp in Sources */,
+				E733E7DA2B780F2B00328AB7 /* piecePawn.cpp in Sources */,
+				E733E7DB2B780F2B00328AB7 /* pieceQueen.cpp in Sources */,
+				E733E7DC2B780F2B00328AB7 /* pieceRook.cpp in Sources */,
+				E733E7DD2B780F2B00328AB7 /* testBishop.cpp in Sources */,
+				E733E7DE2B780F2B00328AB7 /* testKing.cpp in Sources */,
+				E733E7DF2B780F2B00328AB7 /* testPawn.cpp in Sources */,
+				E733E7E02B780F2B00328AB7 /* testQueen.cpp in Sources */,
+				E733E7E12B780F2B00328AB7 /* testRook.cpp in Sources */,
 				C1EE0D9C2B28F3C600E5D6E1 /* chess.cpp in Sources */,
 				C1EE0D9D2B28F3C600E5D6E1 /* test.cpp in Sources */,
 				C1EE0DA22B28F3C600E5D6E1 /* testMove.cpp in Sources */,

@@ -7,9 +7,6 @@
  *    The knight class
  ************************************************************************/
 
-#include <iostream>
-using namespace std;
-
 #include "pieceKnight.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()

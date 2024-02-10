@@ -7,11 +7,6 @@
  *    The Bishop class
  ************************************************************************/
 
-#pragma once
-
-#include <iostream>
-using namespace std;
-
 #include "pieceBishop.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()

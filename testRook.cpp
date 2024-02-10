@@ -30,7 +30,25 @@
  **************************************/
 void TestRook::getMoves_blocked()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Rook rook = Rook(7, 7, true);
+   Black black(PAWN);
+   
+   board.board[2][0] = board.board[2][2] = &black;
+   board.board[1][1] = board.board[3][1] = &black;
+   
+   rook.fWhite = false;
+   rook.position.set(2, 1);
+   set <Move> moves;
+   
+   // EXERCISE
+   rook.getMoves(moves, board);
+   
+   // VERIFY
+   assertUnit(moves.size() == 0);
+   
+   // TEARDOWN
 }
 
 
@@ -50,7 +68,35 @@ void TestRook::getMoves_blocked()
  **************************************/
 void TestRook::getMoves_slideToEnd()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Rook rook = Rook(7, 7, true);
+   
+   rook.fWhite = false;
+   rook.position.set(2, 1);
+   set <Move> moves;
+   
+   // EXERCISE
+   rook.getMoves(moves, board);
+   
+   // VERIFY
+   assertUnit(moves.size() == 14);
+   assertUnit(moves.find(Move("c2c1")) != moves.end());
+   assertUnit(moves.find(Move("c2b2")) != moves.end());
+   assertUnit(moves.find(Move("c2a2")) != moves.end());
+   assertUnit(moves.find(Move("c2d2")) != moves.end());
+   assertUnit(moves.find(Move("c2e2")) != moves.end());
+   assertUnit(moves.find(Move("c2f2")) != moves.end());
+   assertUnit(moves.find(Move("c2g2")) != moves.end());
+   assertUnit(moves.find(Move("c2h2")) != moves.end());
+   assertUnit(moves.find(Move("c2c3")) != moves.end());
+   assertUnit(moves.find(Move("c2c4")) != moves.end());
+   assertUnit(moves.find(Move("c2c5")) != moves.end());
+   assertUnit(moves.find(Move("c2c6")) != moves.end());
+   assertUnit(moves.find(Move("c2c7")) != moves.end());
+   assertUnit(moves.find(Move("c2c8")) != moves.end());
+   
+   // TEARDOWN
 }
 
 
@@ -70,7 +116,35 @@ void TestRook::getMoves_slideToEnd()
  **************************************/
 void TestRook::getMoves_slideToBlock()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Rook rook = Rook(7, 7, true);
+   Black black(PAWN);
+   
+   board.board[2][0] = board.board[2][7] = &black;
+   board.board[0][1] = board.board[7][1] = &black;
+   
+   rook.fWhite = false;
+   rook.position.set(2, 1);
+   set <Move> moves;
+   
+   // EXERCISE
+   rook.getMoves(moves, board);
+   
+   // VERIFY
+   assertUnit(moves.size() == 10);
+   assertUnit(moves.find(Move("c2b2")) != moves.end());
+   assertUnit(moves.find(Move("c2d2")) != moves.end());
+   assertUnit(moves.find(Move("c2e2")) != moves.end());
+   assertUnit(moves.find(Move("c2f2")) != moves.end());
+   assertUnit(moves.find(Move("c2g2")) != moves.end());
+   assertUnit(moves.find(Move("c2c3")) != moves.end());
+   assertUnit(moves.find(Move("c2c4")) != moves.end());
+   assertUnit(moves.find(Move("c2c5")) != moves.end());
+   assertUnit(moves.find(Move("c2c6")) != moves.end());
+   assertUnit(moves.find(Move("c2c7")) != moves.end());
+   
+   // TEARDOWN
 }
 
 /*************************************
@@ -89,7 +163,39 @@ void TestRook::getMoves_slideToBlock()
  **************************************/
 void TestRook::getMoves_slideToCapture()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Rook rook = Rook(7, 7, true);
+   White white(PAWN);
+   
+   board.board[2][0] = board.board[2][7] = &white;
+   board.board[0][1] = board.board[7][1] = &white;
+   
+   rook.fWhite = false;
+   rook.position.set(2, 1);
+   set <Move> moves;
+   
+   // EXERCISE
+   rook.getMoves(moves, board);
+   
+   // VERIFY
+   assertUnit(moves.size() == 14);
+   assertUnit(moves.find(Move("c2c1p")) != moves.end());
+   assertUnit(moves.find(Move("c2b2")) != moves.end());
+   assertUnit(moves.find(Move("c2a2p")) != moves.end());
+   assertUnit(moves.find(Move("c2d2")) != moves.end());
+   assertUnit(moves.find(Move("c2e2")) != moves.end());
+   assertUnit(moves.find(Move("c2f2")) != moves.end());
+   assertUnit(moves.find(Move("c2g2")) != moves.end());
+   assertUnit(moves.find(Move("c2h2p")) != moves.end());
+   assertUnit(moves.find(Move("c2c3")) != moves.end());
+   assertUnit(moves.find(Move("c2c4")) != moves.end());
+   assertUnit(moves.find(Move("c2c5")) != moves.end());
+   assertUnit(moves.find(Move("c2c6")) != moves.end());
+   assertUnit(moves.find(Move("c2c7")) != moves.end());
+   assertUnit(moves.find(Move("c2c8p")) != moves.end());
+   
+   // TEARDOWN
 }
 
 
@@ -100,5 +206,13 @@ void TestRook::getMoves_slideToCapture()
  **************************************/
 void TestRook::getType()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
-}
+   // SETUP
+   Rook rook(7, 7, true);
+   PieceType pt;
+   
+   // EXERCISE
+   pt = rook.getType();
+   
+   // VERIFY
+   assertUnit(pt == ROOK);
+} // TEARDOWN

@@ -7,11 +7,6 @@
  *    The Rook class
  ************************************************************************/
 
-#pragma once
-
-#include <iostream>
-using namespace std;
-
 #include "pieceRook.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()
@@ -22,7 +17,7 @@ using namespace std;
 ***************************************************/
 void Rook::display(ogstream* pgout) const
 {
-    pgout->drawBishop(this->position, !isWhite());
+    pgout->drawRook(this->position, !isWhite());
 }
 
 /**********************************************
