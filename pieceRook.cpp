@@ -25,17 +25,15 @@ void Rook::display(ogstream* pgout) const
     pgout->drawBishop(this->position, !isWhite());
 }
 
-// TODO - LINES 33 THROUGH 84 - 2/10/2024
-
 /**********************************************
  * Rook : GET POSSIBLE MOVES
  *********************************************/
 void Rook::getMoves(set <Move>& moves, const Board& board) const
 {
     Delta possibleMoves[4] = {
-       {  1, -1}, {  1,  1},
-
-       { -1, -1}, { -1,  1}
+              {  1,  0},
+    {  0, -1}, /*ROOK*/ {  0,  1},
+              { -1,  0}
     };
     for (int i = 0; i < 4; i++)
     {

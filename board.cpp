@@ -12,7 +12,12 @@
 #include "position.h"
 #include "piece.h"
 #include "pieceSpace.h"
+#include "pieceRook.h"
 #include "pieceKnight.h"
+#include "pieceBishop.h"
+#include "pieceQueen.h"
+#include "pieceKing.h"
+#include "piecePawn.h"
 #include <cassert>
 using namespace std;
 
@@ -22,14 +27,14 @@ using namespace std;
  *         Just fill the board with the known pieces
  *   +---a-b-c-d-e-f-g-h---+
  *   |                     |
- *   8     N         N     8
- *   7                     7
+ *   8   R N B Q K B N R   8
+ *   7   P P P P P P P P   7
  *   6                     6
  *   5                     5
  *   4                     4
  *   3                     3
- *   2                     2
- *   1     n         n     1
+ *   2   p p p p p p p p   2
+ *   1   r n b q k b n r   1
  *   |                     |
  *   +---a-b-c-d-e-f-g-h---+
  ***********************************************/
@@ -40,10 +45,24 @@ void Board::reset(bool fFree)
       free();
    else
    {
+      // Inset Rooks
+      board[0][0] = new Rook(0, 0, false);
+      board[0][7] = new Rook(7, 0, false);
+      board[7][0] = new Rook(0, 7, true);
+      board[7][7] = new Rook(7, 7, true);
+      // Insert Knights
       board[1][0] = new Knight(1, 0, false);
       board[6][0] = new Knight(6, 0, false);
       board[1][7] = new Knight(1, 7, true);
       board[6][7] = new Knight(6, 7, true);
+      // Insert Bishops
+      board[0][0] = new Knight(1, 0, false);
+      board[6][0] = new Knight(6, 0, false);
+      board[1][7] = new Knight(1, 7, true);
+      board[6][7] = new Knight(6, 7, true);
+      // Insert Queens
+
+      // Insert Kings
       for (int r = 0; r < 8; r++)
       {
          for (int c = 0; c < 8; c++)

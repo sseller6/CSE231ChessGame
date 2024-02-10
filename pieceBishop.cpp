@@ -33,7 +33,7 @@ void Bishop::getMoves(set <Move>& moves, const Board& board) const
 {
     Delta possibleMoves[4] = {
        {  1, -1}, {  1,  1},
-
+           /* BISHOP */
        { -1, -1}, { -1,  1}
     };
     for (int i = 0; i < 4; i++)

@@ -24,4 +24,7 @@ public:
 	PieceType getType()            const { return PAWN; }
 	void getMoves(set <Move>& moves, const Board& board) const;
 	void display(ogstream* pgout)  const;
+
+private:
+	
 };

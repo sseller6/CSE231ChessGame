@@ -25,17 +25,15 @@ void Queen::display(ogstream* pgout) const
     pgout->drawBishop(this->position, !isWhite());
 }
 
-// TODO - Lines 33 through 84 - 2/10/2024
-
 /**********************************************
  * Queen : GET POSSIBLE MOVES
  *********************************************/
 void Queen::getMoves(set <Move>& moves, const Board& board) const
 {
     Delta possibleMoves[8] = {
-            { 1, -1},{ 1,  0},{ 1,  1},
-            { 0, -1},/*QUEEN*/{ 0,  1},
-            {-1, -1},{-1,  0},{-1,  1},
+            { 1, -1}, { 1,  0}, { 1,  1},
+            { 0, -1}, /*QUEEN*/ { 0,  1},
+            {-1, -1}, {-1,  0}, {-1,  1},
     };
     for (int i = 0; i < 8; i++)
     {

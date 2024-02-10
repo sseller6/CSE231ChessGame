@@ -23,7 +23,6 @@ void Knight::display(ogstream* pgout) const
     pgout->drawKnight(this->position, !isWhite());
 }
 
-
 /**********************************************
  * KNIGHT : GET POSSIBLE MOVES
  *********************************************/
