@@ -4,7 +4,7 @@
  * Author:
 *     Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The Pawn class
  ************************************************************************/
 
 #pragma once
@@ -12,8 +12,8 @@
 #include "piece.h"
 
  /***************************************************
-  * KNIGHT
-  * The knight, aka the "Horse"
+  * PAWN
+  * The Pawn, aka "cannon fodder."
   ***************************************************/
 class Pawn : public Piece
 {

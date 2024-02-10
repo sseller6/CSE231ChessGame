@@ -4,7 +4,7 @@
  * Author:
 *    Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The Bishop class
  ************************************************************************/
 
 #pragma once
@@ -13,7 +13,7 @@
 
  /***************************************************
   * BISHOP
-  * The bishop, a holy man.
+  * The Bishop. Presumably, a holy man.
   ***************************************************/
 class Bishop : public Piece
 {

@@ -4,7 +4,7 @@
  * Author:
 *     Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The King class
  ************************************************************************/
 
 #pragma once

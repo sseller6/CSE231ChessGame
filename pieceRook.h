@@ -4,7 +4,7 @@
  * Author:
 *     Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The Rook class
  ************************************************************************/
 
 #pragma once
@@ -12,8 +12,8 @@
 #include "piece.h"
 
  /***************************************************
-  * KNIGHT
-  * The knight, aka the "Horse"
+  * ROOK
+  * The Rook, aka the "Horse"
   ***************************************************/
 class Rook : public Piece
 {

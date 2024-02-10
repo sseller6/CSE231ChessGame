@@ -7,6 +7,8 @@
  *    The Bishop class
  ************************************************************************/
 
+#pragma once
+
 #include <iostream>
 using namespace std;
 

@@ -4,7 +4,7 @@
  * Author:
 *     Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The Queen class
  ************************************************************************/
 
 #pragma once
@@ -12,8 +12,8 @@
 #include "piece.h"
 
  /***************************************************
-  * KNIGHT
-  * The knight, aka the "Horse"
+  * QUEEN
+  * The Queen, aka "Her Majesty."
   ***************************************************/
 class Queen : public Piece
 {
