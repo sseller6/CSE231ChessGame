@@ -11,6 +11,12 @@
 #include "testBoard.h"
 #include "position.h"
 #include "piece.h"
+#include "pieceRook.h"
+#include "pieceKnight.h"
+#include "pieceBishop.h"
+#include "pieceQueen.h"
+#include "pieceKing.h"
+#include "piecePawn.h"
 #include "board.h"
 #include <cassert>
 
@@ -33,7 +39,26 @@
   ********************************************************/
 void TestBoard::move_pawnSimple()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+//   // SETUP
+//   Board board = Board();
+//   Pawn pawn = Pawn(7, 7, false);
+//   
+//   pawn.fWhite = true;
+//   pawn.position.set(0, 1);
+//   pawn.nMoves = 0;
+//   
+//   board.board[0][1] = &pawn;
+//   
+//   Move move = Move(Position(0, 1), Position(0, 2));
+//   
+//   // EXERCISE
+//   board.move(move);
+//   
+//   // VERIFY
+//   assertUnit(board.board[0][1]->getType() == SPACE);
+//   assertUnit(board.board[0][2]->getType() == PAWN);
+//   
+//   // TEARDOWN
 }
 
 

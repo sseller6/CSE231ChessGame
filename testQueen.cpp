@@ -8,10 +8,10 @@
  ************************************************************************/
 
 #include "testQueen.h"
-#include "pieceQueen.h"     
+#include "pieceQueen.h"
 #include "board.h"
 #include "uiDraw.h"
-#include <cassert>      
+#include <cassert>
 
 
 
@@ -32,7 +32,27 @@
  **************************************/
 void TestQueen::getMoves_blocked()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Queen queen = Queen(7, 7, true);
+   Black black(PAWN);
+   
+   board.board[1][0] = board.board[2][0] = &black;
+   board.board[3][0] = board.board[1][1] = &black;
+   board.board[3][1] = board.board[1][2] = &black;
+   board.board[2][2] = board.board[3][2] = &black;
+
+   queen.fWhite = false;
+   queen.position.set(2, 1);
+   set <Move> moves;
+
+   // EXERCISE
+   queen.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 0);
+
+   // TEARDOWN
 }
 
 /*************************************
@@ -51,7 +71,50 @@ void TestQueen::getMoves_blocked()
  **************************************/
 void TestQueen::getMoves_slideToEnd()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Queen queen = Queen(7, 7, true);
+
+   queen.fWhite = false;
+   queen.position.set(2, 1);
+   set <Move> moves;
+
+   // EXERCISE
+   queen.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 23);
+
+   // First Row
+   assertUnit(moves.find(Move("c2c1")) != moves.end());
+   assertUnit(moves.find(Move("c2b1")) != moves.end());
+   assertUnit(moves.find(Move("c2d1")) != moves.end());
+   // Second Row
+   assertUnit(moves.find(Move("c2b2")) != moves.end());
+   assertUnit(moves.find(Move("c2a2")) != moves.end());
+   assertUnit(moves.find(Move("c2d2")) != moves.end());
+   assertUnit(moves.find(Move("c2e2")) != moves.end());
+   assertUnit(moves.find(Move("c2f2")) != moves.end());
+   assertUnit(moves.find(Move("c2g2")) != moves.end());
+   assertUnit(moves.find(Move("c2h2")) != moves.end());
+   // Third Row
+   assertUnit(moves.find(Move("c2b3")) != moves.end());
+   assertUnit(moves.find(Move("c2d3")) != moves.end());
+   // Diagonals
+   assertUnit(moves.find(Move("c2a4")) != moves.end());
+   assertUnit(moves.find(Move("c2d3")) != moves.end());
+   assertUnit(moves.find(Move("c2e4")) != moves.end());
+   assertUnit(moves.find(Move("c2f5")) != moves.end());
+   assertUnit(moves.find(Move("c2g6")) != moves.end());
+   assertUnit(moves.find(Move("c2h7")) != moves.end());
+   // Column C
+   assertUnit(moves.find(Move("c2c3")) != moves.end());
+   assertUnit(moves.find(Move("c2c4")) != moves.end());
+   assertUnit(moves.find(Move("c2c5")) != moves.end());
+   assertUnit(moves.find(Move("c2c6")) != moves.end());
+   assertUnit(moves.find(Move("c2c7")) != moves.end());
+   assertUnit(moves.find(Move("c2c8")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -70,7 +133,47 @@ void TestQueen::getMoves_slideToEnd()
  **************************************/
 void TestQueen::getMoves_slideToBlock()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Queen queen = Queen(7, 7, true);
+   Black black(PAWN);
+
+   board.board[1][0] = board.board[2][0] = &black;
+   board.board[3][0] = board.board[0][1] = &black;
+   board.board[7][1] = board.board[0][3] = &black;
+   board.board[2][7] = board.board[7][6] = &black;
+
+   queen.fWhite = false;
+   queen.position.set(2, 1);
+   set <Move> moves;
+
+   // EXERCISE
+   queen.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 15);
+
+   // Second Row
+   assertUnit(moves.find(Move("c2b2")) != moves.end());
+   assertUnit(moves.find(Move("c2d2")) != moves.end());
+   assertUnit(moves.find(Move("c2e2")) != moves.end());
+   assertUnit(moves.find(Move("c2f2")) != moves.end());
+   assertUnit(moves.find(Move("c2g2")) != moves.end());
+   // Third Row
+   assertUnit(moves.find(Move("c2b3")) != moves.end());
+   assertUnit(moves.find(Move("c2d3")) != moves.end());
+   // Diagonals
+   assertUnit(moves.find(Move("c2d3")) != moves.end());
+   assertUnit(moves.find(Move("c2e4")) != moves.end());
+   assertUnit(moves.find(Move("c2f5")) != moves.end());
+   assertUnit(moves.find(Move("c2g6")) != moves.end());
+   // Column C
+   assertUnit(moves.find(Move("c2c3")) != moves.end());
+   assertUnit(moves.find(Move("c2c4")) != moves.end());
+   assertUnit(moves.find(Move("c2c5")) != moves.end());
+   assertUnit(moves.find(Move("c2c6")) != moves.end());
+   assertUnit(moves.find(Move("c2c7")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -89,7 +192,56 @@ void TestQueen::getMoves_slideToBlock()
  **************************************/
 void TestQueen::getMoves_slideToCapture()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Queen queen = Queen(7, 7, true);
+   White white(PAWN);
+
+   board.board[1][0] = board.board[2][0] = &white;
+   board.board[3][0] = board.board[0][1] = &white;
+   board.board[7][1] = board.board[0][3] = &white;
+   board.board[2][7] = board.board[7][6] = &white;
+
+   queen.fWhite = false;
+   queen.position.set(2, 1);
+   set <Move> moves;
+
+   // EXERCISE
+   queen.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 23);
+
+   // First Row
+   assertUnit(moves.find(Move("c2c1p")) != moves.end());
+   assertUnit(moves.find(Move("c2b1p")) != moves.end());
+   assertUnit(moves.find(Move("c2d1p")) != moves.end());
+   // Second Row
+   assertUnit(moves.find(Move("c2b2"))  != moves.end());
+   assertUnit(moves.find(Move("c2a2p")) != moves.end());
+   assertUnit(moves.find(Move("c2d2"))  != moves.end());
+   assertUnit(moves.find(Move("c2e2"))  != moves.end());
+   assertUnit(moves.find(Move("c2f2"))  != moves.end());
+   assertUnit(moves.find(Move("c2g2"))  != moves.end());
+   assertUnit(moves.find(Move("c2h2p")) != moves.end());
+   // Third Row
+   assertUnit(moves.find(Move("c2b3"))  != moves.end());
+   assertUnit(moves.find(Move("c2d3"))  != moves.end());
+   // Diagonals
+   assertUnit(moves.find(Move("c2a4p")) != moves.end());
+   assertUnit(moves.find(Move("c2d3"))  != moves.end());
+   assertUnit(moves.find(Move("c2e4"))  != moves.end());
+   assertUnit(moves.find(Move("c2f5"))  != moves.end());
+   assertUnit(moves.find(Move("c2g6"))  != moves.end());
+   assertUnit(moves.find(Move("c2h7p")) != moves.end());
+   // Column C
+   assertUnit(moves.find(Move("c2c3"))  != moves.end());
+   assertUnit(moves.find(Move("c2c4"))  != moves.end());
+   assertUnit(moves.find(Move("c2c5"))  != moves.end());
+   assertUnit(moves.find(Move("c2c6"))  != moves.end());
+   assertUnit(moves.find(Move("c2c7"))  != moves.end());
+   assertUnit(moves.find(Move("c2c8p")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -100,5 +252,13 @@ void TestQueen::getMoves_slideToCapture()
  **************************************/
 void TestQueen::getType()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
-}
+   // SETUP
+   Queen queen(7, 7, true);
+   PieceType pt;
+   
+   // EXERCISE
+   pt = queen.getType();
+
+   // VERIFY
+   assertUnit(pt == QUEEN);
+}   // TEARDOWN

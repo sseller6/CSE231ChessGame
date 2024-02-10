@@ -30,9 +30,9 @@ public:
       //construct_default(); // do this later
 
       // move
-      //move_pawnSimple();
-      //move_pawnCapture();
-      //move_pawnDouble();
+      move_pawnSimple();
+      move_pawnCapture();
+      move_pawnDouble();
       //move_pawnEnpassant();
       //move_pawnPromotion();
       //move_rookSlide();

@@ -92,14 +92,14 @@ void Move::assignMove(const char * input)
 /***************************************************
  * MOVE : LETTER FROM PIECE TYPE
  ***************************************************/
-Move::Move(const Position source, const Position destination, const MoveType moveType, const PieceType capture)
+Move::Move(const Position source, const Position destination, const MoveType moveType, const PieceType capture, const PieceType promote)
 {
    this->source = source;
    dest = destination;
    this->moveType = moveType;
    this->capture = capture;
-   
-   promote = SPACE;
+   this->promote = promote;
+
    isWhite = false;
    
    // ASCII for lowercase -> 97-122
@@ -140,6 +140,22 @@ Move::Move(const Position source, const Position destination, const MoveType mov
          case PAWN:
             suffix = 'p';
             break;
+         default:
+             switch (promote)
+             {
+                 case QUEEN:
+                     suffix = 'Q';
+                     break;
+                 case ROOK:
+                     suffix = 'R';
+                     break;
+                 case BISHOP:
+                     suffix = 'B';
+                     break;
+                 case KNIGHT:
+                     suffix = 'N';
+                     break;
+             }
       }
    }
    

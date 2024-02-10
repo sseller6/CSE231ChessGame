@@ -8,10 +8,10 @@
  ************************************************************************/
 
 #include "testPawn.h"
-#include "piecePawn.h"     
+#include "piecePawn.h"
 #include "board.h"
 #include "uiDraw.h"
-#include <cassert>      
+#include <cassert>
 
 
 
@@ -34,7 +34,22 @@
   **************************************/
 void TestPawn::getMoves_simpleWhite()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, false);
+
+   pawn.fWhite = true;
+   pawn.position.set(1, 3);
+   pawn.nMoves = 2;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 1);
+   assertUnit(moves.find(Move("b4b5")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -56,7 +71,24 @@ void TestPawn::getMoves_simpleWhite()
  **************************************/
 void TestPawn::getMoves_simpleBlack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+
+   pawn.fWhite = false;
+   pawn.position.set(1, 3);
+   pawn.nMoves = 3;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBA_OF_MOVES = moves.size();
+
+   assertUnit(moves.size() == 1);
+   assertUnit(moves.find(Move("b4b3")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -79,7 +111,23 @@ void TestPawn::getMoves_simpleBlack()
  **************************************/
 void TestPawn::getMoves_initialAdvanceWhite()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, false);
+
+   pawn.fWhite = true;
+   pawn.position.set(1, 1);
+   pawn.nMoves = 0;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("b2b3")) != moves.end());
+   assertUnit(moves.find(Move("b2b4")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -101,7 +149,23 @@ void TestPawn::getMoves_initialAdvanceWhite()
  **************************************/
 void TestPawn::getMoves_initialAdvanceBlack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+
+   pawn.fWhite = false;
+   pawn.position.set(2, 6);
+   pawn.nMoves = 0;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("c7c6")) != moves.end());
+   assertUnit(moves.find(Move("c7c5")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -124,7 +188,28 @@ void TestPawn::getMoves_initialAdvanceBlack()
  **************************************/
 void TestPawn::getMoves_captureWhite()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, false);
+   Black black(PAWN);
+
+   board.board[0][6] = board.board[1][6] = &black;
+   board.board[2][6] = &black;
+
+   pawn.fWhite = true;
+   pawn.position.set(1, 5);
+   pawn.nMoves = 4;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBAH_OF_MOVES = moves.size();
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("b6a7p")) != moves.end());
+   assertUnit(moves.find(Move("b6c7p")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -147,7 +232,27 @@ void TestPawn::getMoves_captureWhite()
  **************************************/
 void TestPawn::getMoves_captureBlack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+   White white(PAWN);
+
+   board.board[0][4] = board.board[1][4] = &white;
+   board.board[2][4] = &white;
+
+   pawn.fWhite = false;
+   pawn.position.set(1, 5);
+   pawn.nMoves = 4;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("b6a5p")) != moves.end());
+   assertUnit(moves.find(Move("b6c5p")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -169,7 +274,33 @@ void TestPawn::getMoves_captureBlack()
  **************************************/
 void TestPawn::getMoves_enpassantWhite()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, false);
+   Pawn enemyPawn = Pawn(7, 7, false);
+
+   board.board[0][4] = board.board[1][5] = &enemyPawn;
+   board.board[2][4] = &enemyPawn;
+
+   // The black pawns just moved.
+   enemyPawn.lastMove = 4;
+   // The game is fairly new.
+   board.numMoves = 5;
+
+   pawn.fWhite = true;
+   pawn.position.set(1, 4);
+   pawn.nMoves = 3;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBAH_OF_MOVES = moves.size();
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("b5a6p")) != moves.end());
+   assertUnit(moves.find(Move("b5c6p")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -192,7 +323,33 @@ void TestPawn::getMoves_enpassantWhite()
  **************************************/
 void TestPawn::getMoves_enpassantBlack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+   Pawn enemyPawn = Pawn(7, 7, true);
+
+   board.board[4][3] = board.board[5][2] = &enemyPawn;
+   board.board[6][3] = &enemyPawn;
+
+   // The black pawns just moved.
+   enemyPawn.lastMove = 4;
+   // The game is fairly new.
+   board.numMoves = 5;
+
+   pawn.fWhite = false;
+   pawn.position.set(5, 3);
+   pawn.nMoves = 3;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBAH_OF_MOVES = moves.size();
+   assertUnit(moves.size() == 2);
+   assertUnit(moves.find(Move("f4e3p")) != moves.end());
+   assertUnit(moves.find(Move("f4g3p")) != moves.end());
+   // TEARDOWN
 }
 
 /*************************************
@@ -214,7 +371,28 @@ void TestPawn::getMoves_enpassantBlack()
  **************************************/
 void TestPawn::getMoves_promotionWhite()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+   Pawn enemyPawn = Pawn(7, 7, false);
+
+   board.board[0][7] = board.board[2][7] = &enemyPawn;
+
+   pawn.fWhite = true;
+   pawn.position.set(1, 6);
+   pawn.nMoves = 5;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBAH_OF_MOVES = moves.size();
+   assertUnit(moves.size() == 3);
+   assertUnit(moves.find(Move("b7a8p")) != moves.end());
+   assertUnit(moves.find(Move("b7c8p")) != moves.end());
+   assertUnit(moves.find(Move("b7b8Q")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -231,13 +409,34 @@ void TestPawn::getMoves_promotionWhite()
  * 4                     4
  * 3                     3
  * 2          (P)        2
- * 1         r   r       1
+ * 1         p   p       1
  * |                     |
  * +---a-b-c-d-e-f-g-h---+
  **************************************/
 void TestPawn::getMoves_promotionBlack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   BoardEmpty board;
+   Pawn pawn = Pawn(7, 7, true);
+   Pawn enemyPawn = Pawn(7, 7, true);
+
+   board.board[3][0] = board.board[5][0] = &enemyPawn;
+
+   pawn.fWhite = false;
+   pawn.position.set(4, 1);
+   pawn.nMoves = 5;
+   set <Move> moves;
+
+   // EXERCISE
+   pawn.getMoves(moves, board);
+
+   // VERIFY
+   int NUMBAH_OF_MOVES = moves.size();
+   assertUnit(moves.size() == 3);
+   assertUnit(moves.find(Move("e2d1p")) != moves.end());
+   assertUnit(moves.find(Move("e2f1p")) != moves.end());
+   assertUnit(moves.find(Move("e2e1Q")) != moves.end());
+   // TEARDOWN
 }
 
 
@@ -248,6 +447,14 @@ void TestPawn::getMoves_promotionBlack()
  **************************************/
 void TestPawn::getType()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
-}
+   // SETUP
+   Pawn pawn(7, 7, true);
+   PieceType pt;
+
+   // EXERCISE
+   pt = pawn.getType();
+
+   // VERIFY
+   assertUnit(pt = PAWN);
+}  // TEARDOWN
 

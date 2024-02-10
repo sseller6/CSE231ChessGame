@@ -205,6 +205,9 @@ void Board::move(const Move & move)
       Piece * replace = new Space(srcCol, srcRow);
       board[desCol][desRow] = pieceMove;
       board[srcCol][srcRow] = replace;
+      
+      // If en-passant
+      //if (move)
    }
 
    // TODO: write ENPASSANT and PROMOTE
