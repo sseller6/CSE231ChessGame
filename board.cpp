@@ -43,7 +43,11 @@ void Board::reset(bool fFree)
    // free everything that's not empty
    if (fFree)
       free();
-   else
+
+   for (int r = 0; r < 8; r++)
+      for (int c = 0; c < 8; c++)
+         assert(nullptr == board[c][r]);
+   
    {
       // Insert Rooks
       board[0][0] = new Rook(0, 0, true);
@@ -88,7 +92,7 @@ void Board::reset(bool fFree)
       {
          for (int c = 0; c < 8; c++)
          {
-            if (!board[c][r])
+            if (board[c][r] == nullptr)
                board[c][r] = new Space(c, r);
          }
       }
@@ -102,10 +106,12 @@ void Board::reset(bool fFree)
 ***********************************************/
 const Piece& Board::operator [] (const Position& pos) const
 {
+   assert(nullptr != board[pos.getCol()][pos.getRow()]);
    return *board[pos.getCol()][pos.getRow()];
 }
 Piece& Board::operator [] (const Position& pos)
 {
+   assert(nullptr != board[pos.getCol()][pos.getRow()]);
    return *board[pos.getCol()][pos.getRow()];
 }
 
@@ -122,6 +128,7 @@ void Board::display(const Position & posHover, const Position & posSelect) const
    {
       for (int c = 0; c < 8; c++)
       {
+         assert(nullptr != board[c][r]);
          board[c][r]->display(pgout);
       }
    }
@@ -135,7 +142,9 @@ void Board::display(const Position & posHover, const Position & posSelect) const
 Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
 {
    if (noreset)
-      free();
+      for (int r = 0; r < 8; r++)
+         for (int c = 0; c < 8; c++)
+            board[c][r] = nullptr;
    else
       reset();
 }
@@ -151,11 +160,10 @@ void Board::free()
     {
         for (int c = 0; c < 8; c++)
         {
-            if (board[c][r])
+            if (board[c][r] != nullptr)
             {
-                // TDOD: implement DELETE
-                // delete board[c][r];
-                board[c][r] = nullptr;
+               delete board[c][r];
+               board[c][r] = nullptr;
             }
         }
     }
@@ -193,7 +201,7 @@ void Board::move(const Move & move)
    Piece * pieceDest = board[desCol][desRow];
    
    // If only move
-   if (move.getMoveType() == move.MOVE && !move.isCapture())
+   if (move.getMoveType() == move.MOVE && !move.isCapture() /* add promotion clause? */)
    {
       board[desCol][desRow] = pieceMove;
       board[srcCol][srcRow] = pieceDest;

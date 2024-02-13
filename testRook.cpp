@@ -49,6 +49,8 @@ void TestRook::getMoves_blocked()
    assertUnit(moves.size() == 0);
    
    // TEARDOWN
+   board.board[2][0] = board.board[2][2] = nullptr;
+   board.board[1][1] = board.board[3][1] = nullptr;
 }
 
 
@@ -145,6 +147,8 @@ void TestRook::getMoves_slideToBlock()
    assertUnit(moves.find(Move("c2c7")) != moves.end());
    
    // TEARDOWN
+   board.board[2][0] = board.board[2][7] = nullptr;
+   board.board[0][1] = board.board[7][1] = nullptr;
 }
 
 /*************************************
@@ -196,6 +200,8 @@ void TestRook::getMoves_slideToCapture()
    assertUnit(moves.find(Move("c2c8p")) != moves.end());
    
    // TEARDOWN
+   board.board[2][0] = board.board[2][7] = nullptr;
+   board.board[0][1] = board.board[7][1] = nullptr;
 }
 
 
