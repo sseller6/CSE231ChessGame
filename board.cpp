@@ -48,55 +48,52 @@ void Board::reset(bool fFree)
       for (int c = 0; c < 8; c++)
          assert(nullptr == board[c][r]);
    
+   // Insert Rooks
+   board[0][0] = new Rook(0, 0, true);
+   board[7][0] = new Rook(7, 0, true);
+   board[0][7] = new Rook(0, 7, false);
+   board[7][7] = new Rook(7, 7, false);
+   // Insert Knights
+   board[1][0] = new Knight(1, 0, true);
+   board[6][0] = new Knight(6, 0, true);
+   board[1][7] = new Knight(1, 7, false);
+   board[6][7] = new Knight(6, 7, false);
+   // Insert Bishops
+   board[2][0] = new Bishop(2, 0, true);
+   board[5][0] = new Bishop(5, 0, true);
+   board[2][7] = new Bishop(2, 7, false);
+   board[5][7] = new Bishop(5, 7, false);
+   // Insert Queens
+   board[3][0] = new Queen(3, 0, true);
+   board[3][7] = new Queen(3, 7, false);
+   // Insert Kings
+   board[4][0] = new King(4, 0, true);
+   board[4][7] = new King(4, 7, false);
+   // Insert Pawns
+   board[0][1] = new Pawn(0, 1, true);
+   board[1][1] = new Pawn(1, 1, true);
+   board[2][1] = new Pawn(2, 1, true);
+   board[3][1] = new Pawn(3, 1, true);
+   board[4][1] = new Pawn(4, 1, true);
+   board[5][1] = new Pawn(5, 1, true);
+   board[6][1] = new Pawn(6, 1, true);
+   board[7][1] = new Pawn(7, 1, true);
+   board[0][6] = new Pawn(0, 6, false);
+   board[1][6] = new Pawn(1, 6, false);
+   board[2][6] = new Pawn(2, 6, false);
+   board[3][6] = new Pawn(3, 6, false);
+   board[4][6] = new Pawn(4, 6, false);
+   board[5][6] = new Pawn(5, 6, false);
+   board[6][6] = new Pawn(6, 6, false);
+   board[7][6] = new Pawn(7, 6, false);
+   
+   for (int r = 0; r < 8; r++)
    {
-      // Insert Rooks
-      board[0][0] = new Rook(0, 0, true);
-      board[7][0] = new Rook(7, 0, true);
-      board[0][7] = new Rook(0, 7, false);
-      board[7][7] = new Rook(7, 7, false);
-      // Insert Knights
-      board[1][0] = new Knight(1, 0, true);
-      board[6][0] = new Knight(6, 0, true);
-      board[1][7] = new Knight(1, 7, false);
-      board[6][7] = new Knight(6, 7, false);
-      // Insert Bishops
-      board[2][0] = new Bishop(2, 0, true);
-      board[5][0] = new Bishop(5, 0, true);
-      board[2][7] = new Bishop(2, 7, false);
-      board[5][7] = new Bishop(5, 7, false);
-      // Insert Queens
-      board[3][0] = new Queen(3, 0, true);
-      board[3][7] = new Queen(3, 7, false);
-      // Insert Kings
-      board[4][0] = new King(4, 0, true);
-      board[4][7] = new King(4, 7, false);
-      // Insert Pawns
-      board[0][1] = new Pawn(0, 1, true);
-      board[1][1] = new Pawn(1, 1, true);
-      board[2][1] = new Pawn(2, 1, true);
-      board[3][1] = new Pawn(3, 1, true);
-      board[4][1] = new Pawn(4, 1, true);
-      board[5][1] = new Pawn(5, 1, true);
-      board[6][1] = new Pawn(6, 1, true);
-      board[7][1] = new Pawn(7, 1, true);
-      board[0][6] = new Pawn(0, 6, false);
-      board[1][6] = new Pawn(1, 6, false);
-      board[2][6] = new Pawn(2, 6, false);
-      board[3][6] = new Pawn(3, 6, false);
-      board[4][6] = new Pawn(4, 6, false);
-      board[5][6] = new Pawn(5, 6, false);
-      board[6][6] = new Pawn(6, 6, false);
-      board[7][6] = new Pawn(7, 6, false);
-      
-      for (int r = 0; r < 8; r++)
+      for (int c = 0; c < 8; c++)
       {
-         for (int c = 0; c < 8; c++)
-         {
-            if (board[c][r] == nullptr)
-               board[c][r] = new Space(c, r);
-         }
+         if (board[c][r] == nullptr)
+            board[c][r] = new Space(c, r);
       }
-      
    }
 }
 
@@ -141,12 +138,11 @@ void Board::display(const Position & posHover, const Position & posSelect) const
  ************************************************/
 Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
 {
-   if (noreset)
-      for (int r = 0; r < 8; r++)
-         for (int c = 0; c < 8; c++)
-            board[c][r] = nullptr;
-   else
-      reset();
+   for (int r = 0; r < 8; r++)
+      for (int c = 0; c < 8; c++)
+         board[c][r] = nullptr;
+   if (!noreset)
+      reset(false);
 }
 
 

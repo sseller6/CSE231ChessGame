@@ -53,6 +53,10 @@ void TestQueen::getMoves_blocked()
    assertUnit(moves.size() == 0);
 
    // TEARDOWN
+   board.board[1][0] = board.board[2][0] = nullptr;
+   board.board[3][0] = board.board[1][1] = nullptr;
+   board.board[3][1] = board.board[1][2] = nullptr;
+   board.board[2][2] = board.board[3][2] = nullptr;
 }
 
 /*************************************
@@ -173,7 +177,12 @@ void TestQueen::getMoves_slideToBlock()
    assertUnit(moves.find(Move("c2c5")) != moves.end());
    assertUnit(moves.find(Move("c2c6")) != moves.end());
    assertUnit(moves.find(Move("c2c7")) != moves.end());
+   
    // TEARDOWN
+   board.board[1][0] = board.board[2][0] = nullptr;
+   board.board[3][0] = board.board[0][1] = nullptr;
+   board.board[7][1] = board.board[0][3] = nullptr;
+   board.board[2][7] = board.board[7][6] = nullptr;
 }
 
 /*************************************
@@ -241,7 +250,12 @@ void TestQueen::getMoves_slideToCapture()
    assertUnit(moves.find(Move("c2c6"))  != moves.end());
    assertUnit(moves.find(Move("c2c7"))  != moves.end());
    assertUnit(moves.find(Move("c2c8p")) != moves.end());
+   
    // TEARDOWN
+   board.board[1][0] = board.board[2][0] = nullptr;
+   board.board[3][0] = board.board[0][1] = nullptr;
+   board.board[7][1] = board.board[0][3] = nullptr;
+   board.board[2][7] = board.board[7][6] = nullptr;
 }
 
 

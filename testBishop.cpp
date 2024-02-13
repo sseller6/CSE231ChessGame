@@ -52,6 +52,8 @@ void TestBishop::getMoves_blocked()
    assertUnit(moves.size() == 0);
    
    // TEARDOWN
+   board.board[1][0] = board.board[1][2] = nullptr;
+   board.board[3][0] = board.board[3][2] = nullptr;
 }
 
 /*************************************
@@ -137,6 +139,8 @@ void TestBishop::getMoves_slideToBlock()
    assertUnit(moves.find(Move("c2g6")) != moves.end());
    
    // TEARDOWN
+   board.board[1][0] = board.board[3][0] = nullptr;
+   board.board[0][3] = board.board[7][6] = nullptr;
 }
 
 
@@ -184,6 +188,8 @@ void TestBishop::getMoves_slideToCapture()
    assertUnit(moves.find(Move("c2h7p")) != moves.end());
    
    // TEARDOWN
+   board.board[1][0] = board.board[3][0] = nullptr;
+   board.board[0][3] = board.board[7][6] = nullptr;
 }
 
 

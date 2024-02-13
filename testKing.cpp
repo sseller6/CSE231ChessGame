@@ -52,6 +52,10 @@ void TestKing::getMoves_blocked()
    assertUnit(moves.size() == 0);
    
    // TEARDOWN
+   board.board[2][3] = board.board[3][3] = nullptr;
+   board.board[4][3] = board.board[2][4] = nullptr;
+   board.board[4][4] = board.board[2][5] = nullptr;
+   board.board[3][5] = board.board[4][5] = nullptr;
 }
 
 /*************************************
@@ -99,6 +103,10 @@ void TestKing::getMoves_capture()
    assertUnit(moves.find(Move("d5e6p")) != moves.end());
    
    // TEARDOWN
+   board.board[2][3] = board.board[3][3] = nullptr;
+   board.board[4][3] = board.board[2][4] = nullptr;
+   board.board[4][4] = board.board[2][5] = nullptr;
+   board.board[3][5] = board.board[4][5] = nullptr;
 }
 
 
@@ -224,6 +232,10 @@ void TestKing::getMoves_whiteCastle()
    assertUnit(moves.find(Move("e1g1c")) != moves.end());
    
    // TEARDOWN
+   board.board[3][1] = board.board[4][1] = nullptr;
+   board.board[5][1] = nullptr;
+   board.board[0][0] = nullptr;
+   board.board[7][0] = nullptr;
 }
 
 
@@ -270,6 +282,10 @@ void TestKing::getMoves_blackCastle()
    assertUnit(moves.find(Move("e8g8c")) != moves.end());
    
    // TEARDOWN
+   board.board[3][6] = board.board[4][6] = nullptr;
+   board.board[5][6] = nullptr;
+   board.board[0][7] = nullptr;
+   board.board[7][7] = nullptr;
 }
 
 
@@ -315,6 +331,10 @@ void TestKing::getMoves_whiteCastleKingMoved()
    assertUnit(moves.find(Move("e1f1")) != moves.end());
    
    // TEARDOWN
+   board.board[3][1] = board.board[4][1] = nullptr;
+   board.board[5][1] = nullptr;
+   board.board[0][0] = nullptr;
+   board.board[7][0] = nullptr;
 }
 
 
@@ -361,6 +381,10 @@ void TestKing::getMoves_whiteCastleRookMoved()
    assertUnit(moves.find(Move("e1f1")) != moves.end());
    
    // TEARDOWN
+   board.board[3][1] = board.board[4][1] = nullptr;
+   board.board[5][1] = nullptr;
+   board.board[0][0] = nullptr;
+   board.board[7][0] = nullptr;
 }
 
 /*************************************

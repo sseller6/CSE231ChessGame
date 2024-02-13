@@ -84,8 +84,6 @@ void TestPawn::getMoves_simpleBlack()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBA_OF_MOVES = moves.size();
-
    assertUnit(moves.size() == 1);
    assertUnit(moves.find(Move("b4b3")) != moves.end());
    // TEARDOWN
@@ -127,6 +125,7 @@ void TestPawn::getMoves_initialAdvanceWhite()
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("b2b3")) != moves.end());
    assertUnit(moves.find(Move("b2b4")) != moves.end());
+   
    // TEARDOWN
 }
 
@@ -165,6 +164,7 @@ void TestPawn::getMoves_initialAdvanceBlack()
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("c7c6")) != moves.end());
    assertUnit(moves.find(Move("c7c5")) != moves.end());
+   
    // TEARDOWN
 }
 
@@ -205,11 +205,13 @@ void TestPawn::getMoves_captureWhite()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBAH_OF_MOVES = moves.size();
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("b6a7p")) != moves.end());
    assertUnit(moves.find(Move("b6c7p")) != moves.end());
+   
    // TEARDOWN
+   board.board[0][6] = board.board[1][6] = nullptr;
+   board.board[2][6] = nullptr;
 }
 
 
@@ -252,7 +254,10 @@ void TestPawn::getMoves_captureBlack()
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("b6a5p")) != moves.end());
    assertUnit(moves.find(Move("b6c5p")) != moves.end());
+   
    // TEARDOWN
+   board.board[0][4] = board.board[1][4] = nullptr;
+   board.board[2][4] = nullptr;
 }
 
 /*************************************
@@ -296,11 +301,13 @@ void TestPawn::getMoves_enpassantWhite()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBAH_OF_MOVES = moves.size();
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("b5a6p")) != moves.end());
    assertUnit(moves.find(Move("b5c6p")) != moves.end());
+   
    // TEARDOWN
+   board.board[0][4] = board.board[1][5] = nullptr;
+   board.board[2][4] = nullptr;
 }
 
 
@@ -345,11 +352,13 @@ void TestPawn::getMoves_enpassantBlack()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBAH_OF_MOVES = moves.size();
    assertUnit(moves.size() == 2);
    assertUnit(moves.find(Move("f4e3p")) != moves.end());
    assertUnit(moves.find(Move("f4g3p")) != moves.end());
+   
    // TEARDOWN
+   board.board[4][3] = board.board[5][2] = nullptr;
+   board.board[6][3] = nullptr;
 }
 
 /*************************************
@@ -387,12 +396,13 @@ void TestPawn::getMoves_promotionWhite()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBAH_OF_MOVES = moves.size();
    assertUnit(moves.size() == 3);
    assertUnit(moves.find(Move("b7a8p")) != moves.end());
    assertUnit(moves.find(Move("b7c8p")) != moves.end());
    assertUnit(moves.find(Move("b7b8Q")) != moves.end());
+   
    // TEARDOWN
+   board.board[0][7] = board.board[2][7] = nullptr;
 }
 
 
@@ -431,12 +441,13 @@ void TestPawn::getMoves_promotionBlack()
    pawn.getMoves(moves, board);
 
    // VERIFY
-   int NUMBAH_OF_MOVES = moves.size();
    assertUnit(moves.size() == 3);
    assertUnit(moves.find(Move("e2d1p")) != moves.end());
    assertUnit(moves.find(Move("e2f1p")) != moves.end());
    assertUnit(moves.find(Move("e2e1Q")) != moves.end());
+   
    // TEARDOWN
+   board.board[3][0] = board.board[5][0] = nullptr;
 }
 
 
