@@ -121,6 +121,18 @@ void Board::display(const Position & posHover, const Position & posSelect) const
    pgout->drawBoard();
    pgout->drawHover(posHover);
    pgout->drawSelected(posSelect);
+   
+   // Draw possible moves
+   Piece * pieceSelect = board[posSelect.getCol()][posSelect.getRow()];
+   if (posSelect.isValid())
+   {
+      set <Move> possibleMoves;
+      pieceSelect->getMoves(possibleMoves, *this);
+      set<Move>::iterator it;
+      for (it = possibleMoves.begin(); it != possibleMoves.end(); it++)
+         pgout->drawPossible(it->getDestination());
+   }
+   
    for (int r = 0; r < 8; r++)
    {
       for (int c = 0; c < 8; c++)
