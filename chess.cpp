@@ -36,16 +36,21 @@ void callBack(Interface *pUI, void * p)
    
    Position prev = pUI->getPreviousPosition();
    Position curr = pUI->getSelectPosition();
-   Piece * piecePrev = &(*pBoard)[prev];
-   if (prev != curr && piecePrev->getType() != SPACE)
+   if (prev.isValid() && curr.isValid())
    {
-      set <Move> possible;
-      piecePrev->getMoves(possible, *pBoard);
-      Move move = Move(prev, curr);
-      if (possible.find(move) != possible.end())
-      {
-         pBoard->move(move);
-      }
+       Piece* piecePrev = &(*pBoard)[prev];
+       if (prev != curr && piecePrev->getType() != SPACE)
+       {
+           set <Move> possible;
+           piecePrev->getMoves(possible, *pBoard);
+           // Find the move whose destination matches the user's current click
+           
+           Move move = Move(prev, curr);
+           if (possible.find(move) != possible.end())
+           {
+               pBoard->move(move);
+           }
+       }
    }
    
    pBoard->display(pUI->getHoverPosition(), pUI->getSelectPosition());

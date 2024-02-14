@@ -40,13 +40,13 @@ public:
    Move(const Position source, const Position destination, const MoveType moveType=MOVE, const PieceType capture=SPACE, const PieceType promote=SPACE);
    
    // Getters
-   Position getSource() const { return source.getLocation(); }
+   Position getSource() const      { return source.getLocation(); }
    Position getDestination() const { return dest.getLocation(); }
-   PieceType getPromote() const { return promote; }
-   PieceType getCapture() const { return capture; }
-   MoveType getMoveType() const { return moveType; }
-   bool getIsWhite() const { return isWhite; }
-   string getText() const { return text; }
+   PieceType getPromote() const    { return promote; }
+   PieceType getCapture() const    { return capture; }
+   MoveType getMoveType() const    { return moveType; }
+   bool getIsWhite() const         { return isWhite; }
+   string getText() const          { return text; }
    
    bool isCapture() const { return capture != SPACE && capture != INVALID; }
    
