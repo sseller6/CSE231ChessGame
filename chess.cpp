@@ -49,6 +49,8 @@ void callBack(Interface *pUI, void * p)
            if (possible.find(move) != possible.end())
            {
                pBoard->move(move);
+              pUI->clearSelectPosition();
+              pUI->clearPreviousPosition();
            }
        }
    }
