@@ -44,13 +44,15 @@ void callBack(Interface *pUI, void * p)
            set <Move> possible;
            piecePrev->getMoves(possible, *pBoard);
            // Find the move whose destination matches the user's current click
-           
-           Move move = Move(prev, curr);
-           if (possible.find(move) != possible.end())
+           set<Move>::iterator it;
+           for (it = possible.begin(); it != possible.end(); it++)
            {
-               pBoard->move(move);
-              pUI->clearSelectPosition();
-              pUI->clearPreviousPosition();
+               if (it->getDestination() == curr)
+               {
+                   pBoard->move(*it);
+                   pUI->clearSelectPosition();
+                   pUI->clearPreviousPosition();
+               }
            }
        }
    }

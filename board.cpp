@@ -213,6 +213,7 @@ void Board::move(const Move & move)
    {
       board[desCol][desRow] = pieceMove;
       pieceMove->setPosition(des);
+      pieceMove->incrementNMoves();
       board[srcCol][srcRow] = pieceDest;
       pieceDest->setPosition(src);
    }
@@ -222,13 +223,19 @@ void Board::move(const Move & move)
    {
       Piece * replace = new Space(srcCol, srcRow);
       board[desCol][desRow] = pieceMove;
+      pieceMove->setPosition(des);
+      pieceMove->incrementNMoves();
       board[srcCol][srcRow] = replace;
       
       // If en-passant
-      //if (move)
+      if (move.getMoveType() == move.ENPASSANT)
+      {
+          Piece* replace = new Space(srcCol, srcRow - 1);
+          board[desCol][desRow - 1] = replace;
+      }
    }
 
-   // TODO: write ENPASSANT and PROMOTE
+   // TODO: Fix ENPASSANT & Write PROMOTE & CASTLING
    
    numMoves++;
 }
