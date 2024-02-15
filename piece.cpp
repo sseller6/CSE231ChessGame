@@ -77,3 +77,12 @@ void Piece::getMoves(set <Move> & movesSet, const Board & board) const
 {
 }
 
+
+/************************************************
+ * PIECE : SET POSITION
+ * Set a piece's position
+ ***********************************************/
+void Piece::setPosition(Position pos)
+{
+	position = pos;
+}

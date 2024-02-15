@@ -212,7 +212,9 @@ void Board::move(const Move & move)
    if (move.getMoveType() == move.MOVE && !move.isCapture() /* add promotion clause? */)
    {
       board[desCol][desRow] = pieceMove;
+      pieceMove->setPosition(des);
       board[srcCol][srcRow] = pieceDest;
+      pieceDest->setPosition(src);
    }
    
    // If capture
