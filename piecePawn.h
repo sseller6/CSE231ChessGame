@@ -24,6 +24,7 @@ public:
 	PieceType getType()            const { return PAWN; }
 	void getMoves(set <Move>& moves, const Board& board) const;
 	void display(ogstream* pgout)  const;
+   bool canPromote() const { return fWhite ? position.getRow() == 7 : position.getRow() == 0; }
 
 private:
 	

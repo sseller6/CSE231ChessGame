@@ -197,6 +197,8 @@ void Board::assertBoard()
  *********************************************/
 void Board::move(const Move & move)
 {  
+   numMoves++;
+   
    Position src = move.getSource();
    Position des = move.getDestination();
    
@@ -214,17 +216,30 @@ void Board::move(const Move & move)
       board[desCol][desRow] = pieceMove;
       pieceMove->setPosition(des);
       pieceMove->incrementNMoves();
+      pieceMove->setLastMove(numMoves);
       board[srcCol][srcRow] = pieceDest;
       pieceDest->setPosition(src);
+      
+      if (pieceMove->getType() == PAWN)
+      {
+         if (((Pawn*)pieceMove)->canPromote())
+         {
+            Queen * promoted = new Queen(des, pieceMove->isWhite());
+            delete board[desCol][desRow];
+            board[desCol][desRow] = promoted;
+         }
+      }
    }
    
    // If capture
    else if (move.isCapture())
    {
       Piece * replace = new Space(srcCol, srcRow);
+      delete board[desCol][desRow];
       board[desCol][desRow] = pieceMove;
       pieceMove->setPosition(des);
       pieceMove->incrementNMoves();
+      pieceMove->setLastMove(numMoves);
       board[srcCol][srcRow] = replace;
       
       // If en-passant
@@ -235,9 +250,7 @@ void Board::move(const Move & move)
       }
    }
 
-   // TODO: Fix ENPASSANT & Write PROMOTE & CASTLING
-   
-   numMoves++;
+   // TODO: Write PROMOTE & CASTLING
 }
 
 
