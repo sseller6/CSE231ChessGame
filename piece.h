@@ -67,7 +67,7 @@ public:
    virtual const Position & getPosition()  const { return position;    }
    virtual bool justMoved(int currentMove) const { return lastMove >= currentMove - 2; }
 
-   // setter
+   // setters
    virtual void setLastMove(int currentMove);
    virtual void setPosition(Position pos);
 
@@ -77,6 +77,7 @@ public:
    virtual void getMoves(set <Move> & moves, const Board & board) const;
 
 protected:
+   void movesHelper(set <Move> & moves, const Board & board, Delta * directions, int size) const;
 
    int  nMoves;                    // how many times have you moved?
    bool fWhite;                    // which team are you on?
@@ -88,7 +89,7 @@ protected:
 
 /***************************************************
  * PIECE DERIVED
- * A simple derived class so we can test Piece. This is a Space
+ * A simple derived class so we can test Piece. This is a Space.
  ***************************************************/
 class PieceDerived : public Piece
 {

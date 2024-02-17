@@ -4,7 +4,7 @@
  * Author:
  *    Josh & Steven
  * Summary:
- *    Everything we need to know about a single chess move
+ *    Everything we need to know about a single chess move.
  ************************************************************************/
 
 #pragma once
@@ -19,7 +19,7 @@ class TestBoard;
 
 /***************************************************
  * MOVE
- * One move across the board
+ * One move across the board.
  ***************************************************/
 class Move
 {

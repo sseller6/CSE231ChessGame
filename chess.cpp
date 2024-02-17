@@ -4,7 +4,7 @@
 * Author:
 *    Josh & Steven
 * Summary:
-*    Play the game of chess
+*    Play the game of chess.
 ************************************************************************/
 
 
@@ -30,10 +30,12 @@ using namespace std;
  **************************************/
 void callBack(Interface *pUI, void * p)
 {
-   // the first step is to cast the void pointer into a game object. This
-   // is the first step of every single callback function in OpenGL. 
+   // The first step is to cast the void pointer into a game object. This
+   // is the first step of every single callback function in OpenGL.
    Board * pBoard = (Board *)p;
    
+   // Then we determine if a move happened. We need the previous and
+   // current selections to do this.
    Position prev = pUI->getPreviousPosition();
    Position curr = pUI->getSelectPosition();
    
@@ -84,6 +86,8 @@ void callBack(Interface *pUI, void * p)
       }
    }
    
+   // Whether or not a move happened, display the board as well as
+   // the user's hover and selection.
    pBoard->display(pUI->getHoverPosition(), pUI->getSelectPosition());
 }
 

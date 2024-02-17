@@ -2,7 +2,7 @@
  * Header File:
  *    ROOK
  * Author:
-*     Josh & Steven
+ *    Josh & Steven
  * Summary:
  *    The Rook class
  ************************************************************************/
@@ -13,7 +13,7 @@
 
  /***************************************************
   * ROOK
-  * The Rook, aka the "Horse"
+  * The Rook, aka the "Castle."
   ***************************************************/
 class Rook : public Piece
 {

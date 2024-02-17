@@ -2,7 +2,7 @@
  * Source File:
  *    PIECE 
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
  *    The Piece base class and all the derived classes:
  *       SPACE, KING, QUEEN, ROOK, KNIGHT, BISHOP, PAWN
@@ -60,8 +60,8 @@ const Piece & Piece::operator = (const Piece & rhs)
 }
 
 /************************************************
- * PIECE : GET MOVES
- * Iterate through the moves decorator to allow a piece to move
+ * PIECE : SET LAST MOVE
+ * Set the piece's last move and increment nMoves.
  ***********************************************/
 void Piece::setLastMove(int currentMove)
 {
@@ -71,16 +71,69 @@ void Piece::setLastMove(int currentMove)
 
 /************************************************
  * PIECE : GET MOVES
- * Iterate through the moves decorator to allow a piece to move
+ * Iterate through the moves decorator to allow a piece to move.
  ***********************************************/
-void Piece::getMoves(set <Move> & movesSet, const Board & board) const
+void Piece::getMoves(set <Move> & moves, const Board & board) const
 {
+    
 }
 
+/************************************************
+ * PIECE : MOVES HELPER
+ * Goes in each direction as far as possible to find all possible
+ * moves for the sliding piece.
+ * Do the same thing for each sliding direction given.
+ ***********************************************/
+void Piece::movesHelper(set <Move> & moves, const Board & board, Delta * directions, int size) const
+{
+   for (int i = 0; i < size; i++)
+   {
+       Delta d = directions[i];
+       Position dest = this->position + d;
+
+       bool extending = true;
+       while (extending)
+       {
+           // Cannot move there if it's off the board
+           if (dest.isValid())
+           {
+               const Piece& pieceDest = board[dest];
+
+               // Case if destination piece is a SPACE
+               if (pieceDest.getType() == SPACE)
+               {
+                   Move move = Move(this->position,
+                                    dest);
+                   moves.insert(move);
+                   dest += d;
+               }
+               // Case if destination piece is opposite team.
+               else if (pieceDest.isWhite() != this->isWhite())
+               {
+                   Move move = Move(this->position,
+                                    dest,
+                                    move.MOVE,
+                                    pieceDest.getType());
+                   moves.insert(move);
+                   extending = false;
+               }
+               // Case if destination piece is same team
+               else if (pieceDest.isWhite() == this->isWhite())
+               {
+                   extending = false;
+               }
+           }
+           else // If off board.
+           {
+               extending = false;
+           }
+       }
+   }
+}
 
 /************************************************
  * PIECE : SET POSITION
- * Set a piece's position
+ * Set a piece's position.
  ***********************************************/
 void Piece::setPosition(Position pos)
 {

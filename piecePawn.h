@@ -2,7 +2,7 @@
  * Header File:
  *    PAWN
  * Author:
-*     Josh & Steven
+ *    Josh & Steven
  * Summary:
  *    The Pawn class
  ************************************************************************/

@@ -2,9 +2,9 @@
  * Header File:
  *    KNIGHT
  * Author:
-*     Josh & Steven
+ *    Josh & Steven
  * Summary:
- *    The KNIGHT class
+ *    The Knight class
  ************************************************************************/
 
 #pragma once
@@ -13,7 +13,7 @@
 
  /***************************************************
   * KNIGHT
-  * The knight, aka the "Horse"
+  * The knight, aka the "Horse."
   ***************************************************/
 class Knight : public Piece
 {

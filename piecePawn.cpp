@@ -13,7 +13,7 @@
 
 /***************************************************
 * PIECE DRAW
-* Draw all the pieces.
+* Draw this pawn.
 ***************************************************/
 void Pawn::display(ogstream* pgout) const
 {
@@ -22,6 +22,12 @@ void Pawn::display(ogstream* pgout) const
 
 /**********************************************
  * Pawn : GET POSSIBLE MOVES
+ * Pawns can:
+ *    Move one tile forward
+ *    Move two tiles forward if first move
+ *    Attack diagonally
+ *    Attack en-passant
+ *    Promote if end turn at the end of the board
  *********************************************/
 void Pawn::getMoves(set <Move>& moves, const Board& board) const
 {

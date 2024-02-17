@@ -2,7 +2,7 @@
  * Header File:
  *    QUEEN
  * Author:
-*     Josh & Steven
+ *    Josh & Steven
  * Summary:
  *    The Queen class
  ************************************************************************/

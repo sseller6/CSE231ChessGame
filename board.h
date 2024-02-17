@@ -4,14 +4,14 @@
  * Author:
  *    Josh & Steven
  * Summary:
- *    A collection of pieces and a small amount of game state
+ *    A collection of pieces and a small amount of game state.
  ************************************************************************/
 
 #pragma once
 
 #include <stack>
 #include <cassert>
-#include "move.h"   // Because we return a set of Move
+#include "move.h"   // Because we take in and return a set of Moves
 
 class ogstream;
 class TestPawn;
@@ -28,7 +28,7 @@ class Piece;
 
 /***************************************************
  * BOARD
- * The game board
+ * The game board.
  **************************************************/
 class Board
 {
@@ -58,8 +58,6 @@ public:
    virtual Piece& operator [] (const Position& pos);
 
 protected:
-   void  assertBoard();
-
    Piece * board[8][8];    // the board of chess pieces
    int numMoves;
 
@@ -69,7 +67,7 @@ protected:
 
 /***************************************************
  * BOARD DUMMY BOARD
- * A board double that does nothing but assert
+ * A board double that does nothing but assert.
  **************************************************/
 class BoardDummy : public Board
 {
@@ -101,7 +99,7 @@ public:
  * BOARD EMPTY
  * The game board that is completely empty.
  * It does not even have spaces though each non-filled
- * spot will report it has a space. This is for unit testing
+ * spot will report it has a space. This is for unit testing.
  **************************************************/
 class BoardEmpty : public BoardDummy
 {

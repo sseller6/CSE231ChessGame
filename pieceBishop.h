@@ -2,7 +2,7 @@
  * Header File:
  *    BISHOP
  * Author:
-*    Josh & Steven
+ *    Josh & Steven
  * Summary:
  *    The Bishop class
  ************************************************************************/

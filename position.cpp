@@ -2,9 +2,9 @@
  * Source File:
  *    POSITION
  * Author:
- *    <your name here>
+ *    Josh & Steven
  * Summary:
- *    The position of a piece, the cursor, or a possible move on a chess board
+ *    The position of a piece, the cursor, or a possible move on a chess board.
  ************************************************************************/
 
 #include "position.h"
@@ -29,7 +29,9 @@ istream & operator >> (istream & in,  Position & rhs)
 }
 
 
-// POSITION CORE
+/*************************************
+ * POSITION get column
+ **************************************/
 int Position::getCol() const
 {
    if (isInvalid())
@@ -40,6 +42,9 @@ int Position::getCol() const
    return col;
 }
 
+/*************************************
+ * POSITION get row
+ **************************************/
 int Position::getRow() const
 {
    if (isInvalid())
@@ -50,6 +55,9 @@ int Position::getRow() const
    return row;
 }
 
+/*************************************
+ * POSITION is invalid
+ **************************************/
 bool Position::isInvalid() const
 {
    int col = (int)colRow / 16;
@@ -59,6 +67,9 @@ bool Position::isInvalid() const
    return false;
 }
 
+/*************************************
+ * POSITION is valid
+ **************************************/
 bool Position::isValid() const
 {
    int col = (int)colRow / 16;
@@ -68,29 +79,44 @@ bool Position::isValid() const
    return false;
 }
 
+/*************************************
+ * POSITION get location
+ **************************************/
 int Position::getLocation() const
 {
    // Row is given by 0xf0. Col is given by 0x0f
    return (colRow % 16) * 8 + (colRow / 16);
 }
 
+/*************************************
+ * POSITION set row
+ **************************************/
 void Position::setRow(int r)
 {
    int col = colRow / 16;
    colRow = (uint8_t)(col * 16 + r);
 }
 
+/*************************************
+ * POSITION set column
+ **************************************/
 void Position::setCol(int c)
 {
    int row = colRow % 16;
    colRow = (uint8_t)(c * 16 + row);
 }
 
+/*************************************
+ * POSITION set column and row
+ **************************************/
 void Position::set(int c, int r)
 {
    colRow = (uint8_t)(c * 16 + r);
 }
 
+/*************************************
+ * POSITION set location
+ **************************************/
 void Position::setLocation(int location)
 {
    int col = location % 8;
@@ -98,7 +124,9 @@ void Position::setLocation(int location)
    colRow = (uint8_t)(col * 16 + row);
 }
 
-// POSITION PIXELS
+/*************************************
+ * POSITION set x and y
+ **************************************/
 void Position::setXY(double x, double y)
 {
    // TODO: is this where we worry about border resizing?
@@ -118,9 +146,10 @@ void Position::setXY(double x, double y)
    set(fix_x, fix_y);
 }
 
-
-// POSITION TEXT
-Position::Position(const char * s)
+/*************************************
+ * POSITION set text-based
+ **************************************/
+void Position::set(const char * s)
 {
    if ((s[0] < 'A' || s[0] > 'H') && (s[0] < 'a' || s[0] > 'h'))
       setInvalid();
@@ -128,102 +157,38 @@ Position::Position(const char * s)
       setInvalid();
    else
       set(s[0] - 'a', s[1] - '1');
-//   int col = 16;
-//   int row = 16;
-//   char first = s[0];
-//   char second = s[1];
-//   // ASCII numbers: 48-55
-//   int zeroChar = '0';
-//   int sevenChar = '7';
-//   // ASCII lowercase: 97-122 UPPERCASE: 65-90
-//   if ((first >= 97 && first <= 104) || (first >= 65 && first <= 72))        // first is a valid letter
-//   {
-//      if (first >= 97)
-//         first -= 32;
-//      col = first - 65;
-//      if (second >= zeroChar && second <= sevenChar)                                      // second is a valid number
-//         row = second - (zeroChar + 1); // row starts at 1 visually
-//   }
-//   else if (first >= zeroChar && first <= sevenChar)                                      // first is a valid number
-//   {
-//      row = first - (zeroChar + 1); // row starts at 1 visually
-//      if ((second >= 97 && second <= 104) || (second >= 65 && second <= 72)) // second is a valid letter
-//      {
-//         if (second >= 97)
-//            second -= 32;
-//         col = second - 65;
-//      }
-//   }
-//   colRow = (uint8_t)(col * 16 + row);
 }
 
-// TODO: make less redundant
+/*************************************
+ * POSITION text-based constructor
+ **************************************/
+Position::Position(const char * s)
+{
+   set(s);
+}
+
+/*************************************
+ * POSITION ASSIGNMENT OPERATOR char *
+ **************************************/
 const Position & Position::operator = (const char * rhs)
 {
-   int col = 16;
-   int row = 16;
-   char first = rhs[0];
-   char second = rhs[1];
-   // ASCII numbers: 48-55
-   int zeroChar = '0';
-   int sevenChar = '7';
-   // ASCII lowercase: 97-122 UPPERCASE: 65-90
-   if ((first >= 97 && first <= 104) || (first >= 65 && first <= 72))        // first is a valid letter
-   {
-      if (first >= 97)
-         first -= 32;
-      col = first - 65;
-      if (second >= zeroChar && second <= sevenChar)                                      // second is a valid number
-         row = second - (zeroChar + 1); // row starts at 1 visually
-   }
-   else if (first >= zeroChar && first <= sevenChar)                                      // first is a valid number
-   {
-      row = first - (zeroChar + 1); // row starts at 1 visually
-      if ((second >= 97 && second <= 104) || (second >= 65 && second <= 72)) // second is a valid letter
-      {
-         if (second >= 97)
-            second -= 32;
-         col = second - 65;
-      }
-   }
-   this->colRow = (uint8_t)(col * 16 + row);
+   set(rhs);
    return *this;
 }
 
+/*************************************
+ * POSITION ASSIGNMENT OPERATOR string
+ **************************************/
 const Position & Position::operator = (const string & rhs)
 {
    const char* char_rhs = rhs.c_str();
-   int col = 16;
-   int row = 16;
-   char first = char_rhs[0];
-   char second = char_rhs[1];
-   // ASCII numbers: 48-55
-   int zeroChar = '0';
-   int sevenChar = '7';
-   // ASCII lowercase: 97-122 UPPERCASE: 65-90
-   if ((first >= 97 && first <= 104) || (first >= 65 && first <= 72))        // first is a valid letter
-   {
-      if (first >= 97)
-         first -= 32;
-      col = first - 65;
-      if (second >= zeroChar && second <= sevenChar)                                      // second is a valid number
-         row = second - (zeroChar + 1); // row starts at 1 visually
-   }
-   else if (first >= zeroChar && first <= sevenChar)                                      // first is a valid number
-   {
-      row = first - (zeroChar + 1); // row starts at 1 visually
-      if ((second >= 97 && second <= 104) || (second >= 65 && second <= 72)) // second is a valid letter
-      {
-         if (second >= 97)
-            second -= 32;
-         col = second - 65;
-      }
-   }
-   this->colRow = (uint8_t)(col * 16 + row);
+   set(char_rhs);
    return *this;
 }
 
-// POSITION MOVE
+/*************************************
+ * POSITION ADDITION ASSIGNMENT OPERATOR delta
+ **************************************/
 const Position & Position::operator += (const Delta & rhs)
 {
    if (isValid())
@@ -239,6 +204,9 @@ const Position & Position::operator += (const Delta & rhs)
    return *this;
 }
 
+/*************************************
+ * POSITION ADDITION OPERATOR delta
+ **************************************/
 Position Position::operator+ (const Delta & rhs) const
 {
    return Position(getCol() + rhs.dCol, getRow() + rhs.dRow);

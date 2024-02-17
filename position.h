@@ -4,7 +4,7 @@
  * Author:
  *    Josh & Steven
  * Summary:
- *    The position of a piece, the cursor, or a possible move on a chess board
+ *    The position of a piece, the cursor, or a possible move on a chess board.
  ************************************************************************/
 
 #pragma once
@@ -20,7 +20,7 @@ const int OFFSET_BOARD = 50;   // border between the board and the edge of scree
 
 /***********************************************
  * DELTA
- * Movement in a direction (dRow and dCol)
+ * Movement in a direction (dRow and dCol).
  **********************************************/
 struct Delta
 {
@@ -38,7 +38,7 @@ class PositionTest;
 
 /***************************************************
  * POSITION
- * The location of a piece on the board
+ * The location of a piece on the board.
  ***************************************************/
 class Position
 {
@@ -97,13 +97,14 @@ public:
    //           offsets from a given location. This helps pieces move
    //           on the chess board.
    Position(const Position & rhs, const Delta & delta) : colRow(-1) {  }
-   void adjustRow(int dRow)   { }
-   void adjustCol(int dCol)   { }
+   void adjustRow(int dRow)   { colRow += dRow;      }
+   void adjustCol(int dCol)   { colRow += dCol * 16; }
    const Position & operator += (const Delta & rhs);
    Position operator + (const Delta & rhs) const;
 
 private:
    void set(uint8_t colRowNew) { colRow = colRowNew; }
+   void set(const char * s);
    
    uint8_t colRow;
    static double squareWidth;
@@ -113,4 +114,3 @@ private:
 
 ostream & operator << (ostream & out, const Position & pos);
 istream & operator >> (istream & in,  Position & pos);
-      

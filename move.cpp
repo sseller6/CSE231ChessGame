@@ -28,7 +28,7 @@ Move::Move()
 }
 
 /***************************************************
- * MOVE : NON-DEFAULT CONSTRUCTOR (move)
+ * MOVE : NON-DEFAULT CONSTRUCTOR text-based
  ***************************************************/
 Move::Move(const char* input)
 {
@@ -90,7 +90,7 @@ void Move::assignMove(const char * input)
 }
 
 /***************************************************
- * MOVE : LETTER FROM PIECE TYPE
+ * MOVE : NONDEFAULT CONSTRUCTOR input-based
  ***************************************************/
 Move::Move(const Position source, const Position destination, const MoveType moveType, const PieceType capture, const PieceType promote)
 {
@@ -102,12 +102,10 @@ Move::Move(const Position source, const Position destination, const MoveType mov
 
    isWhite = false;
    
-   // ASCII for lowercase -> 97-122
-   // ASCII for numbers   -> 48-55
-   char colSrc = source.getCol() + 97;
-   char rowSrc = source.getRow() + 49;
-   char colDst = destination.getCol() + 97;
-   char rowDst = destination.getRow() + 49;
+   char colSrc = source.getCol() + 'a';
+   char rowSrc = source.getRow() + '1';
+   char colDst = destination.getCol() +'a';
+   char rowDst = destination.getRow() + '1';
    
    char suffix = 'i';
    
@@ -156,7 +154,7 @@ Move::Move(const Position source, const Position destination, const MoveType mov
                      suffix = 'N';
                      break;
              }
-      }
+        }
    }
    
    if (suffix != 'i')

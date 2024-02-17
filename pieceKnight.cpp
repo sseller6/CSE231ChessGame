@@ -4,16 +4,16 @@
  * Author:
  *    Josh & Steven
  * Summary:
- *    The knight class
+ *    The Knight class
  ************************************************************************/
 
 #include "pieceKnight.h"
 #include "board.h"
 #include "uiDraw.h"    // for draw*()
 
- /***************************************************
+/***************************************************
  * PIECE DRAW
- * Draw all the pieces.
+ * Draw this knight.
  ***************************************************/
 void Knight::display(ogstream* pgout) const
 {
@@ -22,38 +22,42 @@ void Knight::display(ogstream* pgout) const
 
 /**********************************************
  * KNIGHT : GET POSSIBLE MOVES
+ * A knight can:
+ *    Jump across pieces
+ *    Move in an "L" pattern
+ *    Attack in an "L" pattern
  *********************************************/
 void Knight::getMoves(set <Move>& moves, const Board& board) const
 {
-   Delta possibleMoves[8] = {
-                { 2, -1}, { 2,  1},
-      { 1, -2},                    { 1,  2},
+    Delta possibleMoves[8] = {
+                 { 2, -1}, { 2,  1},
+        { 1, -2},                    { 1,  2},
       
-      {-1, -2},                    { -1,  2},
-                {-2, -1}, {-2,  1}
-   };
-   for (int i = 0; i < 8; i++)
-   {
-      Delta d = possibleMoves[i];
-      Position dest = this->position + d;
+        {-1, -2},                    { -1,  2},
+                 {-2, -1}, {-2,  1}
+    };
+    for (int i = 0; i < 8; i++)
+    {
+        Delta d = possibleMoves[i];
+        Position dest = this->position + d;
       
-      // Cannot move there if it's off the board
-      if (dest.getCol() != -1)
-      {
-         if (dest.getRow() != -1)
-         {
-            // or occupied by a piece of same team
-            const Piece& pieceDest = board[dest];
-            if (pieceDest.isWhite() != this->isWhite() || pieceDest.getType() == SPACE)
+        // Cannot move there if it's off the board
+        if (dest.getCol() != -1)
+        {
+            if (dest.getRow() != -1)
             {
-               bool isCapture = pieceDest.getType() != SPACE;
-               Move move = Move(this->position,
-                                dest,
-                                move.MOVE,
-                                isCapture ? pieceDest.getType() : SPACE);
-               moves.insert(move);
+                // or occupied by a piece of same team
+                const Piece& pieceDest = board[dest];
+                if (pieceDest.isWhite() != this->isWhite() || pieceDest.getType() == SPACE)
+                {
+                    bool isCapture = pieceDest.getType() != SPACE;
+                    Move move = Move(this->position,
+                                     dest,
+                                     move.MOVE,
+                                     isCapture ? pieceDest.getType() : SPACE);
+                    moves.insert(move);
+                }
             }
-         }
-      }
-   }
+        }
+    }
 }

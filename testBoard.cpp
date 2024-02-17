@@ -711,7 +711,45 @@ void TestBoard::move_kingAttack()
   ********************************************************/
 void TestBoard::move_kingShortCastle()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   Board board = Board(nullptr, true);
+   King * king = new King(7, 7, true);
+   Rook * rook = new Rook(7, 7, true);
+   Space space_k = Space(7, 7);
+   Space space_r = Space(7, 7);
+   
+   king->fWhite = true;
+   king->position.set(4, 0);
+   king->nMoves = 0;
+   
+   rook->fWhite = true;
+   rook->position.set(7, 0);
+   rook->nMoves = 0;
+   
+   space_r.position.set(5, 0);
+   space_k.position.set(6, 0);
+   
+   board.board[4][0] = king;
+   board.board[5][0] = &space_r;
+   board.board[6][0] = &space_k;
+   board.board[7][0] = rook;
+   
+   Move move = Move(Position(4, 0), Position(6, 0));
+   move.moveType = Move::CASTLE_KING;
+   
+   // EXERCISE
+   board.move(move);
+   
+   // VERIFY
+   assertUnit(board.board[4][0]->getType() == SPACE);
+   assertUnit(board.board[5][0]->getType() == ROOK);
+   assertUnit(board.board[6][0]->getType() == KING);
+   assertUnit(board.board[7][0]->getType() == SPACE);
+   
+   // TEARDOWN
+   delete king;
+   delete rook;
+   board.board[4][0] = board.board[5][0] = board.board[6][0] = board.board[7][0] = nullptr;
 }
 
 
@@ -733,7 +771,49 @@ void TestBoard::move_kingShortCastle()
   ********************************************************/
 void TestBoard::move_kingLongCastle()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   Board board = Board(nullptr, true);
+   King * king = new King(7, 7, true);
+   Rook * rook = new Rook(7, 7, true);
+   Space space   = Space(7, 7);
+   Space space_k = Space(7, 7);
+   Space space_r = Space(7, 7);
+   
+   king->fWhite = true;
+   king->position.set(4, 0);
+   king->nMoves = 0;
+   
+   rook->fWhite = true;
+   rook->position.set(0, 0);
+   rook->nMoves = 0;
+   
+   space.position.set(1, 0);
+   space_k.position.set(2, 0);
+   space_r.position.set(3, 0);
+   
+   board.board[0][0] = rook;
+   board.board[1][0] = &space;
+   board.board[2][0] = &space_k;
+   board.board[3][0] = &space_r;
+   board.board[4][0] = king;
+   
+   Move move = Move(Position(4, 0), Position(2, 0));
+   move.moveType = Move::CASTLE_QUEEN;
+   
+   // EXERCISE
+   board.move(move);
+   
+   // VERIFY
+   assertUnit(board.board[0][0]->getType() == SPACE);
+   assertUnit(board.board[1][0]->getType() == SPACE);
+   assertUnit(board.board[2][0]->getType() == KING);
+   assertUnit(board.board[3][0]->getType() == ROOK);
+   assertUnit(board.board[4][0]->getType() == SPACE);
+   
+   // TEARDOWN
+   delete king;
+   delete rook;
+   board.board[0][0] = board.board[1][0] = board.board[2][0] = board.board[3][0] = board.board[4][0] = nullptr;
 }
 
 
@@ -755,5 +835,15 @@ void TestBoard::move_kingLongCastle()
  ********************************************************/
 void TestBoard::construct_default()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   // SETUP
+   
+   
+   // EXERCISE
+   
+   
+   // VERIFY
+   
+   
+   // TEARDOWN
+   
 }

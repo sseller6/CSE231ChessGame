@@ -4,7 +4,7 @@
  * Author:
  *    Josh & Steven
  * Summary:
- *    A collection of pieces and a small amount of game state
+ *    A collection of pieces and a small amount of game state.
  ************************************************************************/
 
 #include "board.h"
@@ -24,7 +24,7 @@ using namespace std;
 
 /***********************************************
  * BOARD : RESET
- *         Just fill the board with the known pieces
+ *         Just fill the board with the known pieces.
  *   +---a-b-c-d-e-f-g-h---+
  *   |                     |
  *   8   R N B Q K B N R   8
@@ -114,7 +114,7 @@ Piece& Board::operator [] (const Position& pos)
 
  /***********************************************
  * BOARD : DISPLAY
- *         Display the board
+ *         Display the board.
  ***********************************************/
 void Board::display(const Position & posHover, const Position & posSelect) const
 {
@@ -146,7 +146,7 @@ void Board::display(const Position & posHover, const Position & posSelect) const
 
 /************************************************
  * BOARD : CONSTRUCT
- *         Free up all the allocated memory
+ *         Build an empty or filled board.
  ************************************************/
 Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
 {
@@ -160,7 +160,7 @@ Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
 
 /************************************************
  * BOARD : FREE
- *         Free up all the allocated memory
+ *         Free up all the allocated memory.
  ************************************************/
 void Board::free()
 {
@@ -179,20 +179,8 @@ void Board::free()
 
 
 /**********************************************
- * BOARD : ASSERT BOARD
- *         Verify the board is well-formed
- *********************************************/
-void Board::assertBoard()
-{
-
-}
-
-
-
-
-/**********************************************
  * BOARD : MOVE
- *         Execute a move according to the contained instructions
+ *         Execute a move according to the contained instructions.
  *   INPUT move The instructions of the move
  *********************************************/
 void Board::move(const Move & move)
@@ -266,15 +254,25 @@ void Board::move(const Move & move)
       pieceMove->setLastMove(numMoves);
       board[srcCol][srcRow] = replace;
       
-      // If en-passant
-      if (move.getMoveType() == move.ENPASSANT)
+      // Pawn cases
+      if (pieceMove->getType() == PAWN)
       {
-          Piece* replace = new Space(srcCol, srcRow - 1);
-          board[desCol][desRow - 1] = replace;
+         // If en-passant
+         if (move.getMoveType() == move.ENPASSANT)
+         {
+            Piece* replace = new Space(srcCol, srcRow - 1);
+            board[desCol][desRow - 1] = replace;
+         }
+         
+         // Capture + promote
+         else if (((Pawn*)pieceMove)->canPromote())
+         {
+            Queen * promoted = new Queen(des, pieceMove->isWhite());
+            delete board[desCol][desRow];
+            board[desCol][desRow] = promoted;
+         }
       }
    }
-
-   // TODO: Write PROMOTE EDGE CASE (capture+promote) & CASTLING
 }
 
 
@@ -283,7 +281,7 @@ void Board::move(const Move & move)
  * BOARD EMPTY
  * The game board that is completely empty.
  * It does not even have spaces though each non-filled
- * spot will report it has a space. This is for unit testing
+ * spot will report it has a space. This is for unit testing.
  *********************************************/
 BoardEmpty::BoardEmpty() : BoardDummy(), pSpace(nullptr), moveNumber(0)
 {
