@@ -277,7 +277,29 @@ void TestBoard::move_pawnPromotion()
   ********************************************************/
 void TestBoard::move_rookSlide()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+	//   // SETUP
+	Board board = Board();
+	Rook* rook = new Rook(7, 7, false);
+	Space space = Space(7, 7);
+
+	rook->fWhite = true;
+	rook->position.set(4, 4);
+	space.position.set(0, 4);
+
+	board.board[4][4] = rook;
+	board.board[0][4] = &space;
+	Move move = Move(Position(4, 4), Position(0, 4));
+
+	// EXERCISE
+	board.move(move);
+
+	// VERIFY
+	assertUnit(board.board[4][4]->getType() == SPACE);
+	assertUnit(board.board[0][4]->getType() == ROOK);
+
+	// TEARDOWN
+	delete rook;
+	board.board[4][4] = board.board[0][4] = nullptr;
 }
 
 
@@ -298,9 +320,32 @@ void TestBoard::move_rookSlide()
   ********************************************************/
 void TestBoard::move_rookAttack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
-}
+	// SETUP
+	Board board = Board();
+	Rook* rook = new Rook(7, 7, false);
+	Bishop* bishop = new Bishop(7, 7);
 
+	rook->fWhite = true;
+	bishop->fWhite = false;
+	rook->position.set(4, 4);
+	bishop->position.set(0, 4);
+
+	board.board[4][4] = rook;
+	board.board[0][4] = bishop;
+	Move move = Move(Position(4, 4), Position(0, 4));
+	move.capture = BISHOP;
+
+	// EXERCISE
+	board.move(move);
+
+	// VERIFY
+	assertUnit(board.board[4][4]->getType() == SPACE);
+	assertUnit(board.board[0][4]->getType() == ROOK);
+
+	// TEARDOWN
+	delete rook;
+	board.board[4][4] = board.board[0][4] = nullptr;
+}
 
  /********************************************************
   *    e5g3
@@ -319,7 +364,29 @@ void TestBoard::move_rookAttack()
   ********************************************************/
 void TestBoard::move_bishopSlide()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+	//   // SETUP
+	Board board = Board();
+	Bishop* bishop = new Bishop(7, 7, false);
+	Space space = Space(7, 7);
+
+	bishop->fWhite = true;
+	bishop->position.set(4, 4);
+	space.position.set(6, 2);
+
+	board.board[4][4] = bishop;
+	board.board[6][2] = &space;
+	Move move = Move(Position(4, 4), Position(6, 2));
+
+	// EXERCISE
+	board.move(move);
+
+	// VERIFY
+	assertUnit(board.board[4][4]->getType() == SPACE);
+	assertUnit(board.board[6][2]->getType() == BISHOP);
+
+	// TEARDOWN
+	delete bishop;
+	board.board[4][4] = board.board[6][2] = nullptr;
 }
 
 
@@ -340,9 +407,32 @@ void TestBoard::move_bishopSlide()
   ********************************************************/
 void TestBoard::move_bishopAttack()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
-}
+	//   // SETUP
+	Board board = Board();
+	Bishop* bishop = new Bishop(7, 7, false);
+	Queen* queen = new Queen(7, 7);
 
+	bishop->fWhite = true;
+	queen->fWhite = false;
+	bishop->position.set(4, 4);
+	queen->position.set(6, 2);
+
+	board.board[4][4] = bishop;
+	board.board[6][2] = queen;
+	Move move = Move(Position(4, 4), Position(6, 2));
+	move.capture = BISHOP;
+
+	// EXERCISE
+	board.move(move);
+
+	// VERIFY
+	assertUnit(board.board[4][4]->getType() == SPACE);
+	assertUnit(board.board[6][2]->getType() == BISHOP);
+
+	// TEARDOWN
+	delete bishop;
+	board.board[4][4] = board.board[6][2] = nullptr;
+}
 /********************************************************
 *    e5a5b
 * +---a-b-c-d-e-f-g-h---+       +---a-b-c-d-e-f-g-h---+
