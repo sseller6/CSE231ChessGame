@@ -289,6 +289,7 @@ void TestPawn::getMoves_enpassantWhite()
 
    // The black pawns just moved.
    enemyPawn.lastMove = 4;
+   enemyPawn.nMoves = 1;
    // The game is fairly new.
    board.numMoves = 5;
 
@@ -340,6 +341,7 @@ void TestPawn::getMoves_enpassantBlack()
 
    // The black pawns just moved.
    enemyPawn.lastMove = 4;
+   enemyPawn.nMoves = 1;
    // The game is fairly new.
    board.numMoves = 5;
 

@@ -48,7 +48,8 @@ public:
    bool getIsWhite() const         { return isWhite; }
    string getText() const          { return text; }
    
-   bool isCapture() const { return capture != SPACE && capture != INVALID; }
+   bool isCapture() const { return capture != SPACE && capture != INVALID;              }
+   bool isCastle()  const { return moveType == CASTLE_KING || moveType == CASTLE_QUEEN; }
    
    bool operator< (const Move& rhs) const;
 

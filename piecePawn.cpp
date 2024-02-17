@@ -20,8 +20,6 @@ void Pawn::display(ogstream* pgout) const
     pgout->drawPawn(this->position, !isWhite());
 }
 
-// TODO - Lines 33 through 84 - 2/10/2024
-
 /**********************************************
  * Pawn : GET POSSIBLE MOVES
  *********************************************/
@@ -106,7 +104,8 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
            {
               Position checkEP = dest + Delta({ -1, 0 });
               if (board[checkEP].getType() == PAWN &&
-                  board[checkEP].justMoved(board.getCurrentMove()))
+                  board[checkEP].justMoved(board.getCurrentMove()) &&
+                  board[checkEP].getNMoves() == 1)
               {
                  Move move = Move(position,
                                   dest,
@@ -122,7 +121,8 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
            {
               Position checkEP = dest + Delta({ -1, 0 });
               if (board[checkEP].getType() == PAWN &&
-                  board[checkEP].justMoved(board.getCurrentMove()))
+                  board[checkEP].justMoved(board.getCurrentMove()) &&
+                  board[checkEP].getNMoves() == 1)
               {
                  Move move = Move(position,
                                   dest,
@@ -200,7 +200,8 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
             {
                Position checkEP = dest + Delta({ 1, 0 });
                if (board[checkEP].getType() == PAWN &&
-                   board[checkEP].justMoved(board.getCurrentMove()))
+                   board[checkEP].justMoved(board.getCurrentMove()) &&
+                   board[checkEP].getNMoves() == 1)
                {
                   Move move = Move(position,
                                    dest,
@@ -216,7 +217,8 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
             {
                Position checkEP = dest + Delta({ 1, 0 });
                if (board[checkEP].getType() == PAWN &&
-                   board[checkEP].justMoved(board.getCurrentMove()))
+                   board[checkEP].justMoved(board.getCurrentMove()) &&
+                   board[checkEP].getNMoves() == 1)
                {
                   Move move = Move(position,
                                    dest,

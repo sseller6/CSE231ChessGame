@@ -124,7 +124,7 @@ void Board::display(const Position & posHover, const Position & posSelect) const
    
    // Draw possible moves
    Piece * pieceSelect = board[posSelect.getCol()][posSelect.getRow()];
-   if (posSelect.isValid())
+   if (posSelect.isValid() && whiteTurn() == pieceSelect->isWhite())
    {
       set <Move> possibleMoves;
       pieceSelect->getMoves(possibleMoves, *this);
@@ -211,11 +211,10 @@ void Board::move(const Move & move)
    Piece * pieceDest = board[desCol][desRow];
    
    // If only move
-   if (move.getMoveType() == move.MOVE && !move.isCapture() /* add promotion clause? */)
+   if (move.getMoveType() == move.MOVE && !move.isCapture())
    {
       board[desCol][desRow] = pieceMove;
       pieceMove->setPosition(des);
-      pieceMove->incrementNMoves();
       pieceMove->setLastMove(numMoves);
       board[srcCol][srcRow] = pieceDest;
       pieceDest->setPosition(src);
@@ -229,6 +228,31 @@ void Board::move(const Move & move)
             board[desCol][desRow] = promoted;
          }
       }
+   }
+   
+   // If castle
+   else if (move.isCastle())
+   {
+      // Move king
+      board[desCol][desRow] = pieceMove;
+      pieceMove->setPosition(des);
+      pieceMove->setLastMove(numMoves);
+      board[srcCol][srcRow] = pieceDest;
+      pieceDest->setPosition(src);
+      
+      // Move rook
+      bool isKingSide = move.getMoveType() == Move::CASTLE_KING;
+      Position rookSrc = Position(isKingSide ? 7 : 0, pieceMove->isWhite() ? 0 : 7);
+      Position rookDes = Position(isKingSide ? 5 : 3, pieceMove->isWhite() ? 0 : 7);
+      
+      Piece * rookMove      = board[rookSrc.getCol()][rookSrc.getRow()];
+      Piece * pieceRookDest = board[rookDes.getCol()][rookDes.getRow()];
+      
+      board[rookDes.getCol()][rookDes.getRow()] = rookMove;
+      rookMove->setPosition(rookDes);
+      rookMove->setLastMove(numMoves);
+      board[rookSrc.getCol()][rookSrc.getRow()] = pieceRookDest;
+      pieceRookDest->setPosition(rookSrc);
    }
    
    // If capture
@@ -250,7 +274,7 @@ void Board::move(const Move & move)
       }
    }
 
-   // TODO: Write PROMOTE & CASTLING
+   // TODO: Write PROMOTE EDGE CASE (capture+promote) & CASTLING
 }
 
 

@@ -36,25 +36,52 @@ void callBack(Interface *pUI, void * p)
    
    Position prev = pUI->getPreviousPosition();
    Position curr = pUI->getSelectPosition();
-   if (prev.isValid() && curr.isValid())
+   
+   if (pBoard->whiteTurn())
    {
-       Piece* piecePrev = &(*pBoard)[prev];
-       if (prev != curr && piecePrev->getType() != SPACE)
-       {
-           set <Move> possible;
-           piecePrev->getMoves(possible, *pBoard);
-           // Find the move whose destination matches the user's current click
-           set<Move>::iterator it;
-           for (it = possible.begin(); it != possible.end(); it++)
-           {
+      if (prev.isValid() && curr.isValid())
+      {
+         Piece* piecePrev = &(*pBoard)[prev];
+         if (prev != curr && piecePrev->getType() != SPACE && piecePrev->isWhite())
+         {
+            set <Move> possible;
+            piecePrev->getMoves(possible, *pBoard);
+            // Find the move whose destination matches the user's current click
+            set<Move>::iterator it;
+            for (it = possible.begin(); it != possible.end(); it++)
+            {
                if (it->getDestination() == curr)
                {
-                   pBoard->move(*it);
-                   pUI->clearSelectPosition();
-                   pUI->clearPreviousPosition();
+                  pBoard->move(*it);
+                  pUI->clearSelectPosition();
+                  pUI->clearPreviousPosition();
                }
-           }
-       }
+            }
+         }
+      }
+   }
+   else
+   {
+      if (prev.isValid() && curr.isValid())
+      {
+         Piece* piecePrev = &(*pBoard)[prev];
+         if (prev != curr && piecePrev->getType() != SPACE && !piecePrev->isWhite())
+         {
+            set <Move> possible;
+            piecePrev->getMoves(possible, *pBoard);
+            // Find the move whose destination matches the user's current click
+            set<Move>::iterator it;
+            for (it = possible.begin(); it != possible.end(); it++)
+            {
+               if (it->getDestination() == curr)
+               {
+                  pBoard->move(*it);
+                  pUI->clearSelectPosition();
+                  pUI->clearPreviousPosition();
+               }
+            }
+         }
+      }
    }
    
    pBoard->display(pUI->getHoverPosition(), pUI->getSelectPosition());
